@@ -2,6 +2,11 @@
 
 open (IN, "index.noun.modif");
 
+open (OUT1, ">lemma_hyponym.txt");
+open (OUT2, ">lemma_memberMeronym.txt");
+open (OUT3, ">lemma_substanceMeronym.txt");
+open (OUT4, ">lemma_partMeronym.txt");
+
 
 my %offsetToSynset;
 my %hyponymRel;		# ~
@@ -25,6 +30,10 @@ create_partMeronymRel();
 print_partMeronymRel();
 
 close(IN);
+close(OUT1);
+close(OUT2);
+close(OUT3);
+close(OUT4);
 # ==========================================================================
 
 
@@ -59,6 +68,7 @@ sub create_offsetToSynset {
 }
 # ==========================================================================
 sub create_hyponymRel {
+
 	print "Start creating Hyponym Relation\n";
 	open (IN2, "data.noun.modif");
 
@@ -83,6 +93,8 @@ sub create_hyponymRel {
 				} else {
 					$hyponymRel{$currOffset} = "$hypoOffset";
 				}
+
+				print OUT1 "$offsetToSynset{$currOffset}/$offsetToSynset{$hypoOffset}\n";
 
 			}
 		}
@@ -118,6 +130,8 @@ sub create_memberMeronymRel {
 					$memberMeronymRel{$currOffset} = "$offset";
 				}
 
+				print OUT2 "$offsetToSynset{$currOffset}/$offsetToSynset{$offset}\n";
+
 			}
 		}
 	}	
@@ -152,6 +166,7 @@ sub create_substanceMeronymRel {
 					$substanceMeronymRel{$currOffset} = "$offset";
 				}
 
+				print OUT3 "$offsetToSynset{$currOffset}/$offsetToSynset{$offset}\n";
 			}
 		}
 	}	
@@ -186,6 +201,7 @@ sub create_partMeronymRel {
 					$partMeronymRel{$currOffset} = "$offset";
 				}
 
+				print OUT4 "$offsetToSynset{$currOffset}/$offsetToSynset{$offset}\n";
 			}
 		}
 	}	
@@ -200,7 +216,7 @@ sub create_partMeronymRel {
 
 # ==========================================================================
 sub print_offsetToSynset {
-	open (OUT, ">offsetSynset.txt");
+	open (OUT, ">offset_synset.txt");
 
 	print "Printing offsetToSynset to file\n";
 
@@ -214,7 +230,7 @@ sub print_offsetToSynset {
 }
 # ==========================================================================
 sub print_hyponymRel {
-	open (OUT, ">hyponymRel.txt");
+	open (OUT, ">offset_hyponymRel.txt");
 
 	print "Printing hyponymRel to file\n";
 
@@ -228,7 +244,7 @@ sub print_hyponymRel {
 }
 # ==========================================================================
 sub print_memberMeronymRel {
-	open (OUT, ">memberMeronymRel.txt");
+	open (OUT, ">offset_memberMeronymRel.txt");
 
 	print "Printing memberMeronymRel to file\n";
 
@@ -242,7 +258,7 @@ sub print_memberMeronymRel {
 }
 # ==========================================================================
 sub print_substanceMeronymRel {
-	open (OUT, ">substanceMeronymRel.txt");
+	open (OUT, ">offset_substanceMeronymRel.txt");
 
 	print "Printing substanceMeronymRel to file\n";
 
@@ -256,7 +272,7 @@ sub print_substanceMeronymRel {
 }
 # ==========================================================================
 sub print_partMeronymRel {
-	open (OUT, ">partMeronymRel.txt");
+	open (OUT, ">offset_partMeronymRel.txt");
 
 	print "Printing partMeronymRel to file\n";
 
