@@ -1,16 +1,33 @@
 #!/usr/local/bin/perl
 
 open (IN, "index.noun.modif");
-open (OUT, ">result.txt");
+
 
 my %offsetToSynset;
 my %hyponymRel;		# ~
+my %memberMeronymRel;		# ~
+my %substanceMeronymRel;		# ~
+my %partMeronymRel;		# ~
 
 create_offsetToSynset();
 print_offsetToSynset();
 
+create_hyponymRel();
+print_hyponymRel();
+
+create_memberMeronymRel();
+print_memberMeronymRel();
+
+create_substanceMeronymRel();
+print_substanceMeronymRel();
+
+create_partMeronymRel();
+print_partMeronymRel();
+
 close(IN);
-close(OUT);
+# ==========================================================================
+
+
 
 
 # ==========================================================================
@@ -45,28 +62,145 @@ sub create_hyponymRel {
 	print "Start creating Hyponym Relation\n";
 	open (IN2, "data.noun.modif");
 
-	while ($line = <IN>) {
+	while ($line = <IN2>) {
 		chop($line);
+
+		my @tokens = split(/\s+/, $line);
+		my $currOffset = $tokens[0]; 
 	
 		if ($line =~ /\~/) {
 			my @calon = split(/\~/, $line); 
 
-			$len1 = scalar @calon;				
+			my $len1 = scalar @calon;				
 			for (my $i = 1; $i < $len1; $i++) {
 
-				# lanjut sini ya
+				my @calon2 = split(/\s/, $calon[$i]);
+				# ambil offset-nya
+				my $hypoOffset = $calon2[1];
+
+				if ($hyponymRel{$currOffset}) {
+					$hyponymRel{$currOffset} = "$hyponymRel{$currOffset},$hypoOffset";
+				} else {
+					$hyponymRel{$currOffset} = "$hypoOffset";
+				}
 
 			}
-			
 		}
-
 	}	
 
 	close (IN2, "data.noun.modif");
 	print "Finish creating Hyponym Relation\n";
 }
 # ==========================================================================
+sub create_memberMeronymRel {
+	print "Start creating memberMeronymRel Relation\n";
+	open (IN2, "data.noun.modif");
+
+	while ($line = <IN2>) {
+		chop($line);
+
+		my @tokens = split(/\s+/, $line);
+		my $currOffset = $tokens[0]; 
+	
+		if ($line =~ /\%m/) {
+			my @calon = split(/\%m/, $line); 
+
+			my $len1 = scalar @calon;				
+			for (my $i = 1; $i < $len1; $i++) {
+
+				my @calon2 = split(/\s/, $calon[$i]);
+				# ambil offset-nya
+				my $offset = $calon2[1];
+
+				if ($memberMeronymRel{$currOffset}) {
+					$memberMeronymRel{$currOffset} = "$memberMeronymRel{$currOffset},$offset";
+				} else {
+					$memberMeronymRel{$currOffset} = "$offset";
+				}
+
+			}
+		}
+	}	
+
+	close (IN2, "data.noun.modif");
+	print "Finish creating memberMeronymRel Relation\n";
+}
+# ==========================================================================
+sub create_substanceMeronymRel {
+	print "Start creating substanceMeronymRel Relation\n";
+	open (IN2, "data.noun.modif");
+
+	while ($line = <IN2>) {
+		chop($line);
+
+		my @tokens = split(/\s+/, $line);
+		my $currOffset = $tokens[0]; 
+	
+		if ($line =~ /\%s/) {
+			my @calon = split(/\%s/, $line); 
+
+			my $len1 = scalar @calon;				
+			for (my $i = 1; $i < $len1; $i++) {
+
+				my @calon2 = split(/\s/, $calon[$i]);
+				# ambil offset-nya
+				my $offset = $calon2[1];
+
+				if ($substanceMeronymRel{$currOffset}) {
+					$substanceMeronymRel{$currOffset} = "$substanceMeronymRel{$currOffset},$offset";
+				} else {
+					$substanceMeronymRel{$currOffset} = "$offset";
+				}
+
+			}
+		}
+	}	
+
+	close (IN2, "data.noun.modif");
+	print "Finish creating memberMeronymRel Relation\n";
+}
+# ==========================================================================
+sub create_partMeronymRel {
+	print "Start creating partMeronymRel Relation\n";
+	open (IN2, "data.noun.modif");
+
+	while ($line = <IN2>) {
+		chop($line);
+
+		my @tokens = split(/\s+/, $line);
+		my $currOffset = $tokens[0]; 
+	
+		if ($line =~ /\%p/) {
+			my @calon = split(/\%p/, $line); 
+
+			my $len1 = scalar @calon;				
+			for (my $i = 1; $i < $len1; $i++) {
+
+				my @calon2 = split(/\s/, $calon[$i]);
+				# ambil offset-nya
+				my $offset = $calon2[1];
+
+				if ($partMeronymRel{$currOffset}) {
+					$partMeronymRel{$currOffset} = "$partMeronymRel{$currOffset},$offset";
+				} else {
+					$partMeronymRel{$currOffset} = "$offset";
+				}
+
+			}
+		}
+	}	
+
+	close (IN2, "data.noun.modif");
+	print "Finish creating memberMeronymRel Relation\n";
+}
+# ==========================================================================
+
+
+
+
+# ==========================================================================
 sub print_offsetToSynset {
+	open (OUT, ">offsetSynset.txt");
 
 	print "Printing offsetToSynset to file\n";
 
@@ -75,5 +209,63 @@ sub print_offsetToSynset {
 	}
 
 	print "Finish printing offsetToSynset to file\n";
+
+	close(OUT);
+}
+# ==========================================================================
+sub print_hyponymRel {
+	open (OUT, ">hyponymRel.txt");
+
+	print "Printing hyponymRel to file\n";
+
+	foreach  (sort keys %hyponymRel) {
+		 print OUT "$_ : $hyponymRel{$_}\n";
+	}
+
+	print "Finish printing hyponymRel to file\n";
+
+	close(OUT);
+}
+# ==========================================================================
+sub print_memberMeronymRel {
+	open (OUT, ">memberMeronymRel.txt");
+
+	print "Printing memberMeronymRel to file\n";
+
+	foreach  (sort keys %memberMeronymRel) {
+		 print OUT "$_ : $memberMeronymRel{$_}\n";
+	}
+
+	print "Finish printing memberMeronymRel to file\n";
+
+	close(OUT);
+}
+# ==========================================================================
+sub print_substanceMeronymRel {
+	open (OUT, ">substanceMeronymRel.txt");
+
+	print "Printing substanceMeronymRel to file\n";
+
+	foreach  (sort keys %substanceMeronymRel) {
+		 print OUT "$_ : $substanceMeronymRel{$_}\n";
+	}
+
+	print "Finish printing substanceMeronymRel to file\n";
+
+	close(OUT);
+}
+# ==========================================================================
+sub print_partMeronymRel {
+	open (OUT, ">partMeronymRel.txt");
+
+	print "Printing partMeronymRel to file\n";
+
+	foreach  (sort keys %partMeronymRel) {
+		 print OUT "$_ : $partMeronymRel{$_}\n";
+	}
+
+	print "Finish printing partMeronymRel to file\n";
+
+	close(OUT);
 }
 # ==========================================================================
