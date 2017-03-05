@@ -15,9 +15,11 @@ def create_rel(ind_lemmas, rel_code):
 		synsets = wn.synsets(lemma, lang='ind')
 
 		for syn in synsets:
+
+			print_lemma  = syn.lemma_names('ind')
 			
 			if rel_code == 1:
-				rels = syn.hypernyms()
+				rels = syn.hyponyms()
 			elif rel_code == 2:
 				rels = syn.member_meronyms()
 			elif rel_code == 3:
@@ -29,25 +31,11 @@ def create_rel(ind_lemmas, rel_code):
 				ind_names = rel.lemma_names('ind')
 
 				if len(ind_names)> 0:
-					string_print = "%s/%s \n" % (lemma, ind_names)
+					string_print = "%s##%s/%s##%s \n" % (syn, print_lemma, rel, ind_names)
 					f.write(string_print)
 				# ujian - [u'investigasi', u'memeriksa', u'pemeriksaan', u'penelitian', u'pengusutan', u'penyelidikan', u'selidik']
+	f.close()
 	print "done :)"
-
-
-# MAIN PROGRAM
-# get all lemma -- Noun
-print "Retrieving all Indonesia lemma"
-ind_lemmas = wn.all_lemma_names(pos='n', lang='ind')
-
-create_rel(ind_lemmas, 1)
-create_rel(ind_lemmas, 2)
-create_rel(ind_lemmas, 3)
-create_rel(ind_lemmas, 4)
-
-
-
-
 
 # get relation
 
