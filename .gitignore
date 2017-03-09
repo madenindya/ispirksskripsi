@@ -3,3 +3,5 @@ wn-bahasa/data*
 pattern-matching/identic
 pattern-matching/seed
 tmp*
+*.class
+data/
