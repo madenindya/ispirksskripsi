@@ -4,4 +4,5 @@ pattern-matching/identic
 pattern-matching/seed
 tmp*
 *.class
-data/
+00-data/
+*.pyc

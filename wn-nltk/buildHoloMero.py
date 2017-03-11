@@ -1,5 +1,7 @@
 from nltk.corpus import wordnet as wn
 
+globpath = "./../00-data/seed/ind/1-1/"
+
 #############################################################################
 def create_hmm(ind_lemmas):
 	# create mapping synset - noun_ind
@@ -30,7 +32,7 @@ def create_hmm(ind_lemmas):
 						tmp_arr.append(string_print)
 
 	print "Printing..."
-	filename = "ind_holo_mero_m.corpus"
+	filename = globpath + "ind_holo_mero_m.corpus"
 	f = open(filename, 'w')
 
 	pretty_print = set(tmp_arr)
@@ -71,7 +73,7 @@ def create_hms(ind_lemmas):
 						tmp_arr.append(string_print)
 
 	print "Printing..."
-	filename = "ind_holo_mero_s.corpus"
+	filename = globpath + "ind_holo_mero_s.corpus"
 	f = open(filename, 'w')
 
 	pretty_print = set(tmp_arr)
@@ -112,7 +114,7 @@ def create_hmp(ind_lemmas):
 						tmp_arr.append(string_print)
 
 	print "Printing..."
-	filename = "ind_holo_mero_p.corpus"
+	filename = globpath + "ind_holo_mero_p.corpus"
 	f = open(filename, 'w')
 
 	pretty_print = set(tmp_arr)

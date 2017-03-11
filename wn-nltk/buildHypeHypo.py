@@ -1,5 +1,7 @@
 from nltk.corpus import wordnet as wn
 
+globpath = "./../00-data/seed/ind/1-1/"
+
 def create_hh(ind_lemmas, rel_code):
 	# create mapping synset - noun_ind
 
@@ -64,13 +66,13 @@ def create_hh(ind_lemmas, rel_code):
 	
 	filename = ""
 	if rel_code == 1:
-		filename = "ind_hype_hypo.corpus"
+		filename = globpath + "ind_hype_hypo.corpus"
 	elif rel_code == 2:
-		filename = "ind_holo_mero_m.corpus"
+		filename = globpath + "ind_holo_mero_m.corpus"
 	elif rel_code == 3:
-		filename = "ind_holo_mero_s.corpus"
+		filename = globpath + "ind_holo_mero_s.corpus"
 	elif rel_code == 4: 
-		filename = "ind_holo_mero_p.corpus"
+		filename = globpath + "ind_holo_mero_p.corpus"
 
 	f = open(filename, 'w')
 
