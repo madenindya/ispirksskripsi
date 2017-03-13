@@ -45,14 +45,14 @@ sub create_mapping {
 	}
 
 	my $total_kecil = scalar (keys %kecil_besar);
-	print OUT_LOG "Total unique: $total_kecil\n";
+	# print OUT_LOG "Total unique: $total_kecil\n";
 
 	use Data::Dumper;
 	print OUT Dumper \%kecil_besar;
 	close(IN);
 	close(OUT);	
 
-	print "end, bye";
+	print "end, bye\n\n";
 
 	return \%kecil_besar;
 }

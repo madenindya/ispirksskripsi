@@ -13,11 +13,11 @@ sub main {
 
 	# read all files in directory
 	my $directory = '../00-data/wiki/wiki-ind';
-	opendir (DIR, $directory) or die $!;
-	while (my $file = readdir(DIR)) {
-		if ($file =~ /[A-Z]+/) {	
-			print "$file\n";
-			# my $file = "AC";
+	# opendir (DIR, $directory) or die $!;
+	# while (my $file = readdir(DIR)) {
+	# 	if ($file =~ /[A-Z]+/) {	
+	# 		print "$file\n";
+			my $file = "AC";
 			my $subdir = "../00-data/wiki/wiki-ind/$file/";
 			print "$subdir\n";
 			opendir (SUBDIR, $subdir) or die $!;
@@ -31,9 +31,9 @@ sub main {
 			}
 
 			close(SUBDIR);
-		}
-	}
-	closedir(DIR);
+	# 	}
+	# }
+	# closedir(DIR);
 }
 
 
