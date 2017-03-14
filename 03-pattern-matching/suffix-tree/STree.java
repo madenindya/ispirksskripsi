@@ -11,8 +11,8 @@ public class STree {
 		root = new TNode("^", null, "");
 	}
 
-	public void printTree() throws IOException{
-		bw = new BufferedWriter(new FileWriter("tmp_tree"));
+	public void printTree(String ofile) throws IOException{
+		bw = new BufferedWriter(new FileWriter(ofile));
 
 		recursivePrintTree("", root, true);
 
@@ -25,19 +25,21 @@ public class STree {
 		}
 
 		String printNama = node.name;
-		if(node.isRelation) {
-			printNama += "  ";
-			for (String k : node.relationList) {
-				printNama += ","+k+"";
-			}
-		} 
+		// if(node.isRelation) {
+		// 	printNama += "  ";
+		// 	for (String k : node.relationList) {
+		// 		printNama += ","+k+"";
+		// 	}
+		// } 
 
 		if (isLast) {
 			// System.out.println(prefix + "`-" + printNama + " ("+node.occurance+")");
 			bw.write(prefix + "`-" + printNama + " ("+node.occurance+")\n");
+			prefix += "  ";
 		} else {
 			// System.out.println(prefix + "|-" + printNama + " ("+node.occurance+")");
 			bw.write(prefix + "|-" + printNama + " ("+node.occurance+")\n");
+			prefix += "| ";
 		}
 
 		int size = node.childs.size();
@@ -46,10 +48,11 @@ public class STree {
 
 		for (TNode v : node.childs.values()) {
 			if (count < size) {
-				recursivePrintTree(prefix + " " ,v, false);				
+				recursivePrintTree(prefix,v, false);				
 			} else {
-				recursivePrintTree(prefix + "  ",v, true);
+				recursivePrintTree(prefix,v, true);
 			}
+			count++;
 		}
 	} 
 
