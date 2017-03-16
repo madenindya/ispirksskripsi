@@ -6,28 +6,28 @@ import java.io.InputStreamReader;
 
 public class SuffixTreeMain {
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, Exception {
 		STree pohon = new STree();
 
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 		
 		System.out.println("input file:");
 		String path = bf.readLine();
-		System.out.println("output file:");
-		String opath = bf.readLine();
-
 		System.out.println("method:");
 		System.out.println("1. Pattern in between relation");
 		String pilihan = bf.readLine();
 
-		BufferedReader bff = new BufferedReader(new FileReader(path));
-
 		System.out.println("Processing..");
+		BufferedReader bff = new BufferedReader(new FileReader(path));
 		String line = bff.readLine();
-
 		int count = 0;
 		while(line != null && line.length() > 0) {
-			// String line = "tujuan <hyponym>latihan<hyponym> ini adalah untuk meningkatkan kemampuan satuan dan <hypernym>membentuk<hypernym> prajurit raider yang profesional, handal dan tangguh.";
+		// while (count < 5) {
+		// 	String line = "tujuan <hyponym>latihan<hyponym> ini adalah untuk meningkatkan kemampuan satuan dan <hypernym>membentuk<hypernym> prajurit raider yang profesional, handal dan tangguh.";
+		// 	if (count == 3) {
+		// 		line = "tujuan <hyponym>latihan<hyponym> ini adalah untuk meningkatkan kemampuan satuan atau <hypernym>membentuk<hypernym> prajurit raider yang profesional, handal dan tangguh.";	
+		// 	}
+
 			String[] sequences = line.split(" ");
 
 			if (pilihan.equals("1")) {
@@ -43,15 +43,33 @@ public class SuffixTreeMain {
 			}
 			count++;
 		}
-
 		bff.close();
+		System.out.println("Done :D \n");
 
-		// String sequences6[] = {"a", "b", "c"};
-		// pohon.addSequence(sequences6);
-		// String sequencese[] = {"a", "b", "d", "e"};
-		// pohon.addSequence(sequencese);
+		String c = "";
+		while (!c.equals("9")) {
+			System.out.println("What's next?");
+			System.out.println("1. Print Tree");
+			System.out.println("2. Find Pattern");
+			System.out.println("9. Exit");
 
-		pohon.printTree(opath);
+			c = bf.readLine();
+
+			if (c.equals("9")) break;
+
+			System.out.println("output file:");
+			String opath = bf.readLine();
+
+			if (c.equals("1")) {
+				pohon.printTree(opath);
+			} else if (c.equals("2")) {
+
+				System.out.println("min occurance:");
+				int min = Integer.parseInt(bf.readLine());
+				pohon.getPattern(min, opath);
+			} 
+
+		}
 	}
 
 

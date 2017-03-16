@@ -1,11 +1,20 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.Exception;
+
+import java.util.List;
+import java.util.ArrayList;
+
+import java.lang.Override;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class STree {
 	
 	public TNode root;
 	public BufferedWriter bw;
+	public List<TmpNode> sortList;
 
 	public STree() {
 		root = new TNode("^", null, "");
@@ -118,6 +127,53 @@ public class STree {
 			// printTree();
 	}
 
+
+	public void getPattern(int minOccurance, String ofile) throws Exception {
+		bw = new BufferedWriter(new FileWriter(ofile));
+		sortList = new ArrayList<>();
+
+		for (TNode tn : root.childs.values()) {
+			recursiveTraversal1(tn, minOccurance, "");			
+		}
+
+		Collections.sort(sortList, new Comparator<TmpNode>() {
+			@Override
+			public int compare(TmpNode o1, TmpNode o2) {
+		        if(o1.count == o2.count)
+		            return o2.sentence.split(" ").length - o1.sentence.split(" ").length;
+		        else
+		            return o2.count - o1.count;
+		    	}
+		});
+
+		for (TmpNode pr : sortList) {
+			bw.write(pr.sentence + " -- (" + pr.count + ")\n");
+		}
+		
+		bw.close();
+	}
+
+	private void recursiveTraversal1(TNode node, int min, String prev) throws Exception {
+		if (node.occurance < min) {
+			return;
+		} 
+
+		// update prev
+		prev += " " + node.name;
+
+		if (node.childs.size() < 1) {
+			// bw.write(prev + " -- (" + node.occurance + ")\n");
+			sortList.add(new TmpNode(prev, node.occurance));
+		} 
+		else {
+			for (TNode tn : node.childs.values()) {
+				recursiveTraversal1(tn, min, prev);
+			}
+		}
+	}
+
+
+
 	private String checkRel(String token) {
 		// check relation here
 		if (token.contains("hypernym")) {
@@ -142,6 +198,17 @@ public class STree {
 			return token.substring(base, n-base);
 		}
 		return "kata-" + rel;
+	}
+
+	class TmpNode {
+		String sentence;
+		int count;
+
+		public TmpNode(String s, int c) {
+			this.sentence = s;
+			this.count = c;
+		}
+
 	}
 
 }
