@@ -7,3 +7,4 @@ tmp*
 00-data/
 *.pyc
 *.tree*
+*.pattern

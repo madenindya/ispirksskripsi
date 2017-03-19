@@ -1,0 +1,20 @@
+Goals
+Research
+Methodlogy
+Chalenge
+Progress
+
+- FILTERING!!
+Cari & pikirkan metode filtering seed
+	- kalo ada 1 hyponym dengan >1 hypernym dari synset yg berbeda --> buang
+	- dari synset, cari kata yang paling sering muncul(?)
+	- sentence similarities
+	- wordnet similarity
+	  bahasa indonesia --> eng --> gloss --> wodnet similarity
+	1. buang lemma yg punya 2 hypernym dari synset yg berbeda
+	2. frequency tinggi yg diambil (wiki)
+	3. gloss - similarity
+
+Cari & pikirkan metode filtering pattern
+	- kata diantara; 
+	- seberapa sering kata hypernym/hyponym-nya muncul

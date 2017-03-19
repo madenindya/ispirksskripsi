@@ -1,3 +1,5 @@
+# http://www.nltk.org/howto/wordnet.html
+
 from nltk.corpus import wordnet as wn
 
 from ID_buldSeed_nn import create_rel
