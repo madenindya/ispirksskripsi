@@ -1,5 +1,6 @@
 # http://www.nltk.org/howto/wordnet.html
-
+# 1 SYNSET bisa punya > 1 hypernym --> ambil yg lemma-nya sama ajah
+# 1 LEMMA  bisa punya > 1 synset -> > 1 hypernym --> ambil yg lemmanya sama ajah
 
 from nltk.corpus import wordnet as wn
 from pprint import pprint
@@ -133,7 +134,8 @@ for lemma in ind_lemmas:
 						new_synsets = hypohypes_dict[key][1]
 						new_synsets.extend(new_value[1])
 						new_value = (new_hype, new_synsets)
-						print new_value
+						print new_value[0]
+						# print new_value
 					# kalo gada, new_value nulll
 					else:
 						# print(new_hype)
@@ -157,9 +159,8 @@ for key in hypohypes_dict:
 	hype_tup = hypohypes_dict[key]
 
 	if hype_tup is not None and len(hype_tup[0]) > 0:
-		print_str = "%s => %s" % (key, hype_tup)
+		print_str = "%s => %s # %s\n" % (key, hype_tup[0], hype_tup[1])
 		f.write(print_str)
-		f.write("\n")
 
 f.close()
 print "100% -- sampai disini LEMMA-SYNSET hyponym-hypernym udah 1-1"

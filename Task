@@ -1,10 +1,11 @@
+PRESENTASI:
 Goals
 Research
 Methodlogy
 Chalenge
 Progress
 
-- FILTERING!!
+FILTERING
 Cari & pikirkan metode filtering seed
 	- kalo ada 1 hyponym dengan >1 hypernym dari synset yg berbeda --> buang
 	- dari synset, cari kata yang paling sering muncul(?)
@@ -14,7 +15,13 @@ Cari & pikirkan metode filtering seed
 	1. buang lemma yg punya 2 hypernym dari synset yg berbeda
 	2. frequency tinggi yg diambil (wiki)
 	3. gloss - similarity
-
 Cari & pikirkan metode filtering pattern
 	- kata diantara; 
 	- seberapa sering kata hypernym/hyponym-nya muncul
+
+TODO:
+- LEMMA dgn > 1 SYNSET hypernym --> ambil berdasarkan gloss similarity (?)
+- presentasi
+
+DONE:
+1. LEMMA dgn > 1 SYNSET hypernym --> ambil yg lemma-nya beririsan
