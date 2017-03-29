@@ -1,10 +1,13 @@
-wn-bahasa/tmp*
+00-data/
+00-data/wiki/wiki-ind
+00-data/dump-mapping/*.corpus
+00-data/identic/
+00-data/wn-31wn-bahasa/tmp*
 wn-bahasa/data*
 pattern-matching/identic
 pattern-matching/seed
 tmp*
 *.class
-00-data/
 *.pyc
 *.tree*
 *.pattern
