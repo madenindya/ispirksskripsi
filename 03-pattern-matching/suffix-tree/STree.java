@@ -16,11 +16,9 @@ public class STree {
 	public TNode root;
 	public BufferedWriter bw;
 	public List<TmpNode> sortList;
-	public HashMap<String, List<String>> index;
 
 	public STree() {
 		root = new TNode("^", null, "");
-		index = new HashMap<>();
 	}
 
 

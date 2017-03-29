@@ -1,4 +1,6 @@
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 import java.io.*;
 
 public class SuffixTreeMain {
@@ -7,6 +9,8 @@ public class SuffixTreeMain {
 		STree pohon = new STree();
 
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		HashMap<String, List<String>> index = new HashMap<>();
+
 		
 
 		System.out.println("input folder (ex: /home/madenindya):");
@@ -26,15 +30,37 @@ public class SuffixTreeMain {
 			String line = bff.readLine();
 			int count = 0;
 			while(line != null && line.length() > 0) {
-
+				count++;
 				String[] sequences = line.split(" ");
 
+				Pair idx = new Pair(-1, -1);
 				if (pilihan.equals("1")) {
-					Pair idx = getIndexInBetween(sequences);
+					idx = getIndexInBetween(sequences);
 					sequences = getFilteredSequences(sequences, idx);
 				}
 
 				if (sequences.length > 0) {
+
+					System.out.println("CHECK => " + idx.key);
+					String sentence = buildSentence(sequences);
+					if (index.containsKey(idx.key)) {
+						List<String> lama = index.get(idx.key);
+						if (lama.contains(sentence)) {
+
+							// update line, then next
+							line = bff.readLine();
+							continue;	// kalo udah ada, skip
+						} else {
+							index.get(idx.key).add(sentence);
+						}
+					} else {
+						List<String> baru = new ArrayList<>();
+						baru.add(sentence);
+						index.put(idx.key, baru);
+					}
+
+					System.out.println("PASS => " + idx.key);
+					// add new sequence to Tree
 					pohon.addSequence(sequences);		
 				}
 		
@@ -43,7 +69,6 @@ public class SuffixTreeMain {
 				if (count % 10000 == 0) {
 					System.out.println(count);
 				}
-				count++;
 			}
 			bff.close();
 		}
@@ -150,7 +175,6 @@ public class SuffixTreeMain {
 
 	// ambil array sequence berdasarkan Pair begin, end
 	private static String[] getFilteredSequences(String[] sequences, Pair pair) {
-		System.out.println(pair.key); // lanjut disini
 		int len = pair.end - pair.begin;
 		String[] resultSequences = (len > 2) ? new String[len] : new String[0];
 
@@ -162,6 +186,18 @@ public class SuffixTreeMain {
 			}
 		}
 		return resultSequences;
+	}
+
+	private static String buildSentence(String[] sequences) {
+		String result = "";
+		if (sequences.length > 0) {
+			result = sequences[0];
+
+			for (int i = 1; i < sequences.length; i++) {
+				result += " " + sequences[i];
+			}
+		}
+		return result;
 	}
 
 
