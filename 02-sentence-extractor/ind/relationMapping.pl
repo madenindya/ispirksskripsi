@@ -14,22 +14,23 @@ sub create_mapping {
 	print "to  : $dump_file\n";
 	print "multi? $multi\n";
 
-	open(IN, $seed); 												
-	open(OUT, $dump_file);	
+	open(IN, $seed) or die $!; 												
+	open(OUT, $dump_file) or die $!;	
 
 	my %kecil_besar;
 
 	my $line;
+	my $count = 0;
 	while($line = <IN>) {
 		chop($line);
 
-		$line =~ s/Synset\('[a-z\.0-9\_\-\']*'\)##//g;
-		
+		# $line =~ s/Synset\('[a-z\.0-9\_\-\']*'\)##//g;
+		# my @tokens = split(/\//, $line);
 
-		my @tokens = split(/\//, $line);
+		my @tokens = split(/\s\#\#\s/, $line);
 
-		my $besar = $tokens[0];
-		my $kecil = $tokens[1];
+		my $besar = $tokens[1];
+		my $kecil = $tokens[0];
 
 		if ($kecil eq $besar) {
 			next;
@@ -42,7 +43,9 @@ sub create_mapping {
 		}
 
 		$kecil_besar{$kecil}{$besar}++;
+		$count += 1;
 	}
+	print "Count RELATION => $count\n";
 
 	my $total_kecil = scalar (keys %kecil_besar);
 	# print OUT_LOG "Total unique: $total_kecil\n";

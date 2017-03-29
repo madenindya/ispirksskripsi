@@ -20,8 +20,14 @@ Cari & pikirkan metode filtering pattern
 	- seberapa sering kata hypernym/hyponym-nya muncul
 
 TODO:
-- LEMMA dgn > 1 SYNSET hypernym --> ambil berdasarkan gloss similarity (?)
-- presentasi
+- word embedding
+
+
 
 DONE:
-1. LEMMA dgn > 1 SYNSET hypernym --> ambil yg lemma-nya beririsan
+- LEMMA dgn > 1 SYNSET hypernym --> ambil yg lemma-nya beririsan
+- LEMMA dgn > 1 SYNSET hypernym --> ambil berdasarkan gloss similarity (?)
+- presentasi
+- score lemma dalam synset --> cari tau gimana caranya
+- Voting dari hasil corpus, mana yg sering dan bakal diambil!
+- RAPIIN CODE BUAT FILTER!!

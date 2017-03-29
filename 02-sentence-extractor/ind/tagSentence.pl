@@ -15,7 +15,7 @@ sub tag_sentence {
 	print "Start tagging..\n";
 	my $path = "$globpath/wiki/wiki-ind-s/$dir/$file";
 	print OUT_LOG "input : $path\n";
-	my $opath = ">>$globpath/wiki/wiki-ind-tagged/$rel/sentences_$dir.corpus";
+	my $opath = ">>$globpath/wiki/wiki-ind-tagged-v2/$rel/sentences_$dir.corpus";  # change this
 	print OUT_LOG "output: $opath\n\n";
 
 	my $relk;

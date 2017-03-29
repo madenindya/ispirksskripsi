@@ -22,20 +22,17 @@ public class SuffixTreeMain {
 		String line = bff.readLine();
 		int count = 0;
 		while(line != null && line.length() > 0) {
-		// while (count < 5) {
-		// 	String line = "tujuan <hyponym>latihan<hyponym> ini adalah untuk meningkatkan kemampuan satuan dan <hypernym>membentuk<hypernym> prajurit raider yang profesional, handal dan tangguh.";
-		// 	if (count == 3) {
-		// 		line = "tujuan <hyponym>latihan<hyponym> ini adalah untuk meningkatkan kemampuan satuan atau <hypernym>membentuk<hypernym> prajurit raider yang profesional, handal dan tangguh.";	
-		// 	}
 
 			String[] sequences = line.split(" ");
 
 			if (pilihan.equals("1")) {
-				sequences = getFormatSequence1(sequences);
+				Pair idx = getIndexInBetween(sequences);
 			}
 
-			pohon.addSequence(sequences);
-
+			if (sequences.lenght > 0) {
+				pohon.addSequence(sequences);		
+			}
+	
 			line = bff.readLine();
 			
 			if (count % 10000 == 0) {
@@ -72,34 +69,60 @@ public class SuffixTreeMain {
 		}
 	}
 
-
-	private static String[] getFormatSequence1(String[] sequences) {
-		String hasil = "";
+	// ambil yang in-between ajah
+	private static Pair getIndexInBetween(String[] sequences) {
+		Pair pair = new Pair(-1, -1);
 
 		boolean start = false;
 
+		String prevRel = "";
 		for (int i = 0; i < sequences.length; i++)  {
 			
-			if (checkRel(sequences[i]).length() > 0) {
-				hasil += " " + sequences[i];
+			String rel = checkRel(sequences[i]);
+			if (rel.length() > 0) {
+			
+				// suka ada yg berulang -> gak boleh hypo-hypo atau hype-hype
+				if (start && prevRel.equals(rel)) {
+					// format ulang
+					pair.begin = i;
+				}
+
 				if (start) {
+					pair.end = i;
 					break;
 				} else {
 					start = true;
+					prevRel = rel;
+					pair.begin = i;
 				}
-			} else {
-				if (start) {
-					hasil += " " + sequences[i];
-				}				
 			}
 		}
 
-		// System.out.println(hasil);
-		return hasil.substring(1).split(" ");
+		return pair;
 	}
 
+	// ambil n previous
+	private static String[] getIndexwPrev(String[] sequences, int n) {
+		Pair pair = getIndexInBetween(sequences);
+		if (pair.begin == -1 || pair.end == -1) {
+			return pair; // kalo salah dibiarin aja. bakal ke-filter nanti
+		}
+		pair.begin = ((pair.begin - n) > -1) ? pair.begin - n : 0;
+		return pair
+	}
+
+	// ambil n follower
+	private static String[] getIndexwFollow(String[] sequences, int n) {
+		Pair pair = getIndexInBetween(sequences);
+		if (pair.begin == -1 || pair.end == -1) {
+			return pair; // kalo salah dibiarin aja. bakal ke-filter nanti
+		}
+		pair.end = ((pair.end + n) < sequences.length) ? pair.end + n : sequences.length - 1;
+		return pair
+	}
+
+	// check if relation here
 	private static String checkRel(String token) {
-		// check relation here
 		if (token.contains("hypernym")) {
 			return "hypernym";
 		}
@@ -113,6 +136,31 @@ public class SuffixTreeMain {
 			return "holonym";
 		}
 		return "";
+	}
+
+	// ambil array sequence berdasarkan Pair begin, end
+	private static String[] getFilteredSequences(String[] sequences, Pair pair) {
+		int len = pair.end - pair.begin;
+		String[] resultSequences = (len > 1) ? new String[len] : new String[0];
+
+		int j = 0; 
+		for (int i = pair.begin; i < pair.end; i++) {
+			resultSequences[j] = sequences[i];
+			j++;
+		}
+		return resultSequences;
+	}
+
+
+	class Pair {
+
+		int begin;
+		int end;
+
+		public Pair (b, e) {
+			this.begin = b;
+			this.e = e;
+		}
 	}
 
 }

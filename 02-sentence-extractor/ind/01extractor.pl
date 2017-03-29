@@ -16,7 +16,8 @@ my $globpath = "./../../00-data";
 my $seed = "$globpath/seed/ind/1-1/$infile";
 $dump_file = ">$globpath/dump-mapping/$dump_file";
 
-
+###
+$seed = "../../wn-nltk/seed_sameLemma_11";
 
 # create relation mapping
 print "create mapping $infile\n";
@@ -30,7 +31,6 @@ opendir (DIR, $directory) or die $!;
 
 while (my $file = readdir(DIR)) {
 	if ($file =~ /[A-Z]+/) {	
-		# my $file = "AE";
 		
 		my $subdir = "$directory/$file";
 		print "$file --> $subdir\n";
@@ -48,8 +48,7 @@ while (my $file = readdir(DIR)) {
 		close(SUBDIR);
 	}
 }
-
-closedir(DIR);
+# closedir(DIR);
 
 
 close(OUT_LOG);
