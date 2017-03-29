@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.Exception;
 
 import java.util.List;
+import java.util.HashMap;
 import java.util.ArrayList;
 
 import java.lang.Override;
@@ -15,56 +16,17 @@ public class STree {
 	public TNode root;
 	public BufferedWriter bw;
 	public List<TmpNode> sortList;
+	public HashMap<String, List<String>> index;
 
 	public STree() {
 		root = new TNode("^", null, "");
+		index = new HashMap<>();
 	}
 
-	public void printTree(String ofile) throws IOException{
-		bw = new BufferedWriter(new FileWriter(ofile));
 
-		recursivePrintTree("", root, true);
-
-		bw.close();
-	}
-	
-	private void recursivePrintTree(String prefix, TNode node, boolean isLast)throws IOException {
-		if (node == null) {
-			return;
-		}
-
-		String printNama = node.name;
-		// if(node.isRelation) {
-		// 	printNama += "  ";
-		// 	for (String k : node.relationList) {
-		// 		printNama += ","+k+"";
-		// 	}
-		// } 
-
-		if (isLast) {
-			// System.out.println(prefix + "`-" + printNama + " ("+node.occurance+")");
-			bw.write(prefix + "`-" + printNama + " ("+node.occurance+")\n");
-			prefix += "  ";
-		} else {
-			// System.out.println(prefix + "|-" + printNama + " ("+node.occurance+")");
-			bw.write(prefix + "|-" + printNama + " ("+node.occurance+")\n");
-			prefix += "| ";
-		}
-
-		int size = node.childs.size();
-
-		int count = 1;
-
-		for (TNode v : node.childs.values()) {
-			if (count < size) {
-				recursivePrintTree(prefix,v, false);				
-			} else {
-				recursivePrintTree(prefix,v, true);
-			}
-			count++;
-		}
-	} 
-
+	/**
+	* ADD NEW SEQUENCE to tree
+	*/
 	public void addSequence(String[] sequence) {
 		
 		// check rel
@@ -124,16 +86,59 @@ public class STree {
 			}
 
 		}
-			// printTree();
 	}
 
 
+	/**
+	* PRINT TREE
+	*/
+	public void printTree(String ofile) throws IOException{
+		bw = new BufferedWriter(new FileWriter(ofile));
+
+		recursivePrintTree("", root, true);
+
+		bw.close();
+	}
+	
+	private void recursivePrintTree(String prefix, TNode node, boolean isLast)throws IOException {
+		if (node == null) {
+			return;
+		}
+
+		String printNama = node.name;
+
+		if (isLast) {
+			bw.write(prefix + "`-" + printNama + " ("+node.occurance+")\n");
+			prefix += "  ";
+		} else {
+			bw.write(prefix + "|-" + printNama + " ("+node.occurance+")\n");
+			prefix += "| ";
+		}
+
+		int size = node.childs.size();
+
+		int count = 1;
+
+		for (TNode v : node.childs.values()) {
+			if (count < size) {
+				recursivePrintTree(prefix,v, false);				
+			} else {
+				recursivePrintTree(prefix,v, true);
+			}
+			count++;
+		}
+	} 
+
+
+	/**
+	* PRINT PATTERN
+	*/
 	public void getPattern(int minOccurance, String ofile) throws Exception {
 		bw = new BufferedWriter(new FileWriter(ofile));
 		sortList = new ArrayList<>();
 
 		for (TNode tn : root.childs.values()) {
-			recursiveTraversal1(tn, minOccurance, "");			
+			recursiveGetPattern(tn, minOccurance, "");			
 		}
 
 		Collections.sort(sortList, new Comparator<TmpNode>() {
@@ -153,7 +158,7 @@ public class STree {
 		bw.close();
 	}
 
-	private void recursiveTraversal1(TNode node, int min, String prev) throws Exception {
+	private void recursiveGetPattern(TNode node, int min, String prev) throws Exception {
 		if (node.occurance < min) {
 			return;
 		} 
@@ -162,18 +167,18 @@ public class STree {
 		prev += " " + node.name;
 
 		if (node.childs.size() < 1) {
-			// bw.write(prev + " -- (" + node.occurance + ")\n");
 			sortList.add(new TmpNode(prev, node.occurance));
 		} 
 		else {
 			for (TNode tn : node.childs.values()) {
-				recursiveTraversal1(tn, min, prev);
+				recursiveGetPattern(tn, min, prev);
 			}
 		}
 	}
 
 
 
+	// ----- PRIVATE METHOD -----
 	private String checkRel(String token) {
 		// check relation here
 		if (token.contains("hypernym")) {
@@ -191,6 +196,8 @@ public class STree {
 		return "";
 	}
 
+	// get lemma from hypernym/hyponym tag
+	// TODO change this to use regex
 	private String getKata(String token, String rel) {
 		int base = rel.length()+2;
 		int n = token.length();

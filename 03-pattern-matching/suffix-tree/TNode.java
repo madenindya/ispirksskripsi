@@ -36,4 +36,9 @@ public class TNode {
 		// occurance update not in here
 		relationList.add(nameRel);
 	}
+
+	public boolean isExistRelLemma(String nameRel) {
+		// check if current lemma already in relationList
+		return relationList.contains(nameRel);
+	}
 }

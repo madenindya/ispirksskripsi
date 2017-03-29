@@ -1,8 +1,5 @@
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class SuffixTreeMain {
 	
@@ -11,37 +8,47 @@ public class SuffixTreeMain {
 
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 		
-		System.out.println("input file:");
+
+		System.out.println("input folder (ex: /home/madenindya):");
 		String path = bf.readLine();
+
 		System.out.println("method:");
 		System.out.println("1. Pattern in between relation");
 		String pilihan = bf.readLine();
 
 		System.out.println("Processing..");
-		BufferedReader bff = new BufferedReader(new FileReader(path));
-		String line = bff.readLine();
-		int count = 0;
-		while(line != null && line.length() > 0) {
+		File dir = new File(path);
+		for (File afile : dir.listFiles()) {
+			String filepath = dir + "/" + afile.getName();
+			System.out.println("Read " + filepath);
 
-			String[] sequences = line.split(" ");
+			BufferedReader bff = new BufferedReader(new FileReader(filepath));
+			String line = bff.readLine();
+			int count = 0;
+			while(line != null && line.length() > 0) {
 
-			if (pilihan.equals("1")) {
-				Pair idx = getIndexInBetween(sequences);
-			}
+				String[] sequences = line.split(" ");
 
-			if (sequences.lenght > 0) {
-				pohon.addSequence(sequences);		
+				if (pilihan.equals("1")) {
+					Pair idx = getIndexInBetween(sequences);
+					sequences = getFilteredSequences(sequences, idx);
+				}
+
+				if (sequences.length > 0) {
+					pohon.addSequence(sequences);		
+				}
+		
+				line = bff.readLine();
+				
+				if (count % 10000 == 0) {
+					System.out.println(count);
+				}
+				count++;
 			}
-	
-			line = bff.readLine();
-			
-			if (count % 10000 == 0) {
-				System.out.println(count);
-			}
-			count++;
+			bff.close();
 		}
-		bff.close();
 		System.out.println("Done :D \n");
+
 
 		String c = "";
 		while (!c.equals("9")) {
@@ -80,20 +87,23 @@ public class SuffixTreeMain {
 			
 			String rel = checkRel(sequences[i]);
 			if (rel.length() > 0) {
-			
+
 				// suka ada yg berulang -> gak boleh hypo-hypo atau hype-hype
 				if (start && prevRel.equals(rel)) {
 					// format ulang
 					pair.begin = i;
+					pair.key = sequences[i];		// new
 				}
 
 				if (start) {
-					pair.end = i;
+					pair.end = i + 1;
+					pair.key += sequences[i];		// update
 					break;
 				} else {
 					start = true;
 					prevRel = rel;
 					pair.begin = i;
+					pair.key = sequences[i];		// new 
 				}
 			}
 		}
@@ -102,23 +112,23 @@ public class SuffixTreeMain {
 	}
 
 	// ambil n previous
-	private static String[] getIndexwPrev(String[] sequences, int n) {
+	private static Pair getIndexwPrev(String[] sequences, int n) {
 		Pair pair = getIndexInBetween(sequences);
 		if (pair.begin == -1 || pair.end == -1) {
 			return pair; // kalo salah dibiarin aja. bakal ke-filter nanti
 		}
 		pair.begin = ((pair.begin - n) > -1) ? pair.begin - n : 0;
-		return pair
+		return pair;
 	}
 
 	// ambil n follower
-	private static String[] getIndexwFollow(String[] sequences, int n) {
+	private static Pair getIndexwFollow(String[] sequences, int n) {
 		Pair pair = getIndexInBetween(sequences);
 		if (pair.begin == -1 || pair.end == -1) {
 			return pair; // kalo salah dibiarin aja. bakal ke-filter nanti
 		}
 		pair.end = ((pair.end + n) < sequences.length) ? pair.end + n : sequences.length - 1;
-		return pair
+		return pair;
 	}
 
 	// check if relation here
@@ -140,26 +150,30 @@ public class SuffixTreeMain {
 
 	// ambil array sequence berdasarkan Pair begin, end
 	private static String[] getFilteredSequences(String[] sequences, Pair pair) {
+		System.out.println(pair.key); // lanjut disini
 		int len = pair.end - pair.begin;
-		String[] resultSequences = (len > 1) ? new String[len] : new String[0];
+		String[] resultSequences = (len > 2) ? new String[len] : new String[0];
 
 		int j = 0; 
-		for (int i = pair.begin; i < pair.end; i++) {
-			resultSequences[j] = sequences[i];
-			j++;
+		if (len > 2) {
+			for (int i = pair.begin; i < pair.end; i++) {
+				resultSequences[j] = sequences[i];
+				j++;
+			}
 		}
 		return resultSequences;
 	}
 
 
-	class Pair {
+	static class Pair {
 
 		int begin;
 		int end;
+		String key;
 
-		public Pair (b, e) {
+		public Pair (int b, int e) {
 			this.begin = b;
-			this.e = e;
+			this.end = e;
 		}
 	}
 

@@ -3,12 +3,10 @@
 00-data/dump-mapping/*.corpus
 00-data/identic/
 00-data/wn-31wn-bahasa/tmp*
+00-data/outputTree/
 03-pattern-matching/suffix-tree/output*/
 wn-bahasa/data*
-pattern-matching/identic
-pattern-matching/seed
 tmp*
 *.class
 *.pyc
-*.tree*
-*.pattern
+*.tree
