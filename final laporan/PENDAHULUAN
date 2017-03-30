@@ -1,18 +1,17 @@
 PENDAHULUAN
 
-
-
 LATAR BELAKANG
-WordNet adalah salah satu kamus terpenting. Dalam Bahasa Indonesia, pengembangan WordNet telah dilakukan dalam beberapa penelitian. Salah satu bagian dari WordNet adalah adanya relasi antar kata. Dalam WordNet, relasi tersebut meliputi synonym, antonym, hypernym, hyponym, meronym, dan holonym. Word Relation menampilkan hubungan antar kata terhadap suatu relasi tertentu. 
-Untuk WordNet Princeton, dibangun secara manual. Hal ini membutuhkan waktu yang lama dan cost yang besar. 
-
+WordNet adalah salah satu kamus terpenting, dimana dapat digunakan untuk menunjang penelitian di bidang Information Retrieval dan Natural Language Processing. Berbagai fitur dalam WordNet seperti gloss dan word relation dapat digunakan dalam berbagai kebutuhan lain.
+WordNet yang paling terkenal dan banyak digunakan dalam berbagai penelitian adalah WordNet Priceton. WordNet ini dibangun secara manual oleh ahli linguistik dan berbasis bahasa Inggris.
+Dalam Bahasa Indonesia, pengembangan WordNet telah dilakukan dalam beberapa penelitian. WordNet Bahasa Indonesia yang pernah dibuat adalah Indonesian WordNet (IWN) yang dibuat oleh Fasilkom UI dan WordNet Bahasa yang dibuat oleh NTU. Sayangnya, ukuran dan kualitas kedua WordNet masih sangat terbatas.
+Salah satu bagian dari WordNet adalah adanya relasi antar kata. Dalam WordNet, relasi tersebut meliputi synonym, antonym, hypernym, hyponym, meronym, dan holonym. Word Relation menampilkan hubungan antar kata terhadap suatu relasi tertentu. 
 
 PERUMUSAN MASALAH
 1. Bagaimana cara mendapatkan relasi antar kata secara cepat?
 
 TUJUAN DAN MANFAAT PENELITIAN
-Tujuan: membangun corpus relasi kata berukuran besar berkulatias baik secara otomatis.
-Manfaat: membangun corpus untuk penelitian berikutnya dan mengencourage adanya penelitian untuk semakin memperkaya WordNet Bahasa Indonesia.
+Tujuan: Membangun corpus relasi kata Bahasa Indonesia berukuran besar dan berkualitas baik secara otomatis.
+Manfaat: Membangun corpus relasi kata yang dapat menunjang berbagai penelitan. Selain itu, penelitian ini juga memotivasi adanya penelitian lain yang dapat memperkaya WordNet Bahasa Indonesia.
 
 RUANG LINGKUP PENELITIAN
 Relasi: Hypernym-Hyponym

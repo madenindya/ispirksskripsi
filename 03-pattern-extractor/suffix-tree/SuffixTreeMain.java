@@ -19,7 +19,15 @@ public class SuffixTreeMain {
 
 		System.out.println("method:");
 		System.out.println("1. Pattern in between relation");
+		System.out.println("2. Pattern with n word before");
+		System.out.println("3. Pattern with n word after");
 		String pilihan = bf.readLine();
+
+		int n = 0;
+		if (pilihan.equals("2") || pilihan.equals("3")) {
+			System.out.println("Jumlah n:");
+			n  = Integer.parseInt(bf.readLine());
+		}
 
 		System.out.println("Building tree..");
 
@@ -39,7 +47,7 @@ public class SuffixTreeMain {
 				}
 
 				count++;
-				if (count % 10000 == 0) {
+				if (count % 1000 == 0) {
 					System.out.println(count);
 				}
 
@@ -48,8 +56,12 @@ public class SuffixTreeMain {
 				Pair idx = new Pair(-1, -1);
 				if (pilihan.equals("1")) {
 					idx = getIndexInBetween(sequences);
-					sequences = getFilteredSequences(sequences, idx);
+				} else if (pilihan.equals("2")) {
+					idx = getIndexwPrev(sequences, n);					
+				} else if (pilihan.equals("3")) {
+					idx = getIndexwFollow(sequences, n);
 				}
+				sequences = getFilteredSequences(sequences, idx);
 
 			    // kalo gada isinya, skip
 				if (sequences.length <= 0) {
@@ -99,7 +111,7 @@ public class SuffixTreeMain {
 			if (c.equals("1")) {
 				pohon.printTree(opath);
 			} else if (c.equals("2")) {
-				System.out.println("min occurance:");
+				System.out.println("min pattern occurance:");
 				int min = Integer.parseInt(bf.readLine());
 				pohon.getPattern(min, opath);
 			} 
@@ -147,6 +159,12 @@ public class SuffixTreeMain {
 			}
 		}
 
+		// if no word between relation, reset
+		if (pair.end - pair.begin <= 2) {
+			pair.begin = -1;
+			pair.end = -1;
+		}
+
 		return pair;
 	}
 
@@ -166,7 +184,7 @@ public class SuffixTreeMain {
 		if (pair.begin == -1 || pair.end == -1) {
 			return pair; // kalo salah dibiarin aja. bakal ke-filter nanti
 		}
-		pair.end = ((pair.end + n) < sequences.length) ? pair.end + n : sequences.length - 1;
+		pair.end = ((pair.end + n) < sequences.length) ? pair.end + n : sequences.length;
 		return pair;
 	}
 
