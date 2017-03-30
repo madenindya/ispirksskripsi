@@ -1,0 +1,25 @@
+PENDAHULUAN
+
+
+
+LATAR BELAKANG
+WordNet adalah salah satu kamus terpenting. Dalam Bahasa Indonesia, pengembangan WordNet telah dilakukan dalam beberapa penelitian. Salah satu bagian dari WordNet adalah adanya relasi antar kata. Dalam WordNet, relasi tersebut meliputi synonym, antonym, hypernym, hyponym, meronym, dan holonym. Word Relation menampilkan hubungan antar kata terhadap suatu relasi tertentu. 
+Untuk WordNet Princeton, dibangun secara manual. Hal ini membutuhkan waktu yang lama dan cost yang besar. 
+
+
+PERUMUSAN MASALAH
+1. Bagaimana cara mendapatkan relasi antar kata secara cepat?
+
+TUJUAN DAN MANFAAT PENELITIAN
+Tujuan: membangun corpus relasi kata berukuran besar berkulatias baik secara otomatis.
+Manfaat: membangun corpus untuk penelitian berikutnya dan mengencourage adanya penelitian untuk semakin memperkaya WordNet Bahasa Indonesia.
+
+RUANG LINGKUP PENELITIAN
+Relasi: Hypernym-Hyponym
+Bahasa: Indonesia
+
+METODOLOGI PENELITIAN
+
+
+SISTEMATIKA PENULISAN
+// TODO isi

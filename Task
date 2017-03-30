@@ -19,10 +19,6 @@ Cari & pikirkan metode filtering pattern
 	- kata diantara; 
 	- seberapa sering kata hypernym/hyponym-nya muncul
 
-TODO:
-- word embedding
-
-
 
 DONE:
 - LEMMA dgn > 1 SYNSET hypernym --> ambil yg lemma-nya beririsan
@@ -31,3 +27,21 @@ DONE:
 - score lemma dalam synset --> cari tau gimana caranya
 - Voting dari hasil corpus, mana yg sering dan bakal diambil!
 - RAPIIN CODE BUAT FILTER!!
+
+TODO:
+- word embedding
+- mulai nulis
+- tag sentence
+
+
+
+
+SEMI SUPERVISED:
+- Seed WN
+- Build Tree/Pattern
+- Ambil pattern 
+	- gak ambigu: manual
+	- GENERALIZED PATTERN -> ?
+	- POS TAG -> ?
+- Masukin ke corpus
+- iterasi 1: ambil hasilnya aja sebagai seed -> buang seed2 yg mengandung lemma melayu
