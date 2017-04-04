@@ -29,9 +29,9 @@ public class STree {
 		
 		// check rel
 		String rel = checkRel(sequence[0]);
-
 		TNode node;
 
+		// first element
 		if (rel.length() > 0) {
 			String kata = getKata(sequence[0], rel);
 
@@ -54,6 +54,7 @@ public class STree {
 			}	
 		}
 
+		// next element
 		for (int i = 1; i < sequence.length; i++) {
 
 			// check rel
@@ -180,16 +181,16 @@ public class STree {
 	private String checkRel(String token) {
 		// check relation here
 		if (token.contains("hypernym")) {
-			return "hypernym";
+			return "<hypernym>";
 		}
 		if (token.contains("hyponym")) {
-			return "hyponym";
+			return "<hyponym>";
 		}
 		if (token.contains("meronym")) {
-			return "meronym";
+			return "<meronym>";
 		}
 		if (token.contains("holonym")) {
-			return "holonym";
+			return "<holonym>";
 		}
 		return "";
 	}

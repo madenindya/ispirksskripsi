@@ -45,14 +45,13 @@ public class SuffixTreeMain {
 				if (line == null || line.length() <= 0) {
 					continue;
 				}
-
 				count++;
 				if (count % 1000 == 0) {
 					System.out.println(count);
 				}
-
-				// ambil index berdasarkan kemunculan kata berelasi
 				String[] sequences = line.split(" ");
+
+				// FILTER: ambil index berdasarkan kemunculan kata berelasi
 				Pair idx = new Pair(-1, -1);
 				if (pilihan.equals("1")) {
 					idx = getIndexInBetween(sequences);
@@ -159,7 +158,7 @@ public class SuffixTreeMain {
 			}
 		}
 
-		// if no word between relation, reset
+		// FILTER: if no word between relation, reset
 		if (pair.end - pair.begin <= 2) {
 			pair.begin = -1;
 			pair.end = -1;
