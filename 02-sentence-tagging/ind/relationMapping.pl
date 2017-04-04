@@ -24,9 +24,6 @@ sub create_mapping {
 	while($line = <IN>) {
 		chop($line);
 
-		# $line =~ s/Synset\('[a-z\.0-9\_\-\']*'\)##//g;
-		# my @tokens = split(/\//, $line);
-
 		my @tokens = split(/\s\#\#\s/, $line);
 
 		my $besar = $tokens[1];

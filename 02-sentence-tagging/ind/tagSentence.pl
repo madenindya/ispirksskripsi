@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# RELATION MAPPING
+# Tag Sentence
 
 use strict;
 use warnings;
@@ -10,14 +10,17 @@ my $globpath = "./../../00-data";
 sub tag_sentence {
 	my ($dir, $file, $rel, %map) = (@_);
 
-	open(OUT_LOG, ">>tmp_log") or die $!;
-
-	print "Start tagging..\n";
+	# all necessary path
 	my $path = "$globpath/wiki/wiki-ind-s/$dir/$file";
-	print OUT_LOG "input : $path\n";
 	my $opath = ">>$globpath/wiki/wiki-ind-tagged-v2/$rel/sentences_$dir.corpus";  # change this
+
+	# 1: log for checkpoint
+	open(OUT_LOG, ">>tmp_log") or die $!;
+	print "Start tagging..\n";
+	print OUT_LOG "input : $path\n";
 	print OUT_LOG "output: $opath\n\n";
 
+	# 2: check which relation
 	my $relk;
 	my $relb;
 	if ($rel =~ /^hh$/) {
@@ -31,46 +34,69 @@ sub tag_sentence {
 	open(IN, $path) or die $!;
 	open(OUT, $opath) or die $!;
 
-	# todo: impl
 	my $l;
 	my $count = 0;
-	while ($l = <IN>) {
-		chop($l);
-		$l = lc $l;
+	my $regex1 = '(.+)_';
 
+	# 3: baca setiap baris dalam korpus
+	while ($l = <IN>) {
 		$count += 1;
 
-		# iterate kecil, harus merupakan word
-		foreach my $kecil (keys %map) {
-			if ($l =~ /$kecil/) {
+		chop($l);
+		$l = lc $l; # 4: jadiin lowercase
+		$l =~ s/\(\)//g; # ini suka ada
 
+		foreach my $kecil (keys %map) {
+			# jika mengandung seed <kecil>
+			if ($l =~ /$kecil/) {
+				# ... dan seed <besar>
 				foreach my $besar (keys $map{$kecil}) {
 					if ($l =~ /$besar/) {
 
-						# print OUT_LOG "$count --> found: $kecil - $besar\n";
-						my $line = $l;
+						my $line = "";
+						my @tokens = split(/\s+/, $l);						
+						
+						# 5: iterate tokens 
+						foreach my $token (@tokens) {
+							if (length $token < 1) {
+								next;
+							}
 
-						$line =~ s/$kecil/<$relk>$kecil<$relk>/g;
-						if ($line =~ /[a-z\.\-0-9]<$relk>[a-z\.\-0-9]+<$relk>/) {
-							next;
-						}
-						if ($line =~ /<$relk>[a-z\.\-0-9]+<$relk>[a-z\.\-0-9]/) {
-							next;
+							# 5.5: tambahin rule jika token berhimpit dengan 1 karakter non alphanumeric
+							# hanya yang di depan/belakang aja
+							while ($token =~ /^([^A-z0-9])/) {
+								$line = "$line $1";
+								$token =~ s/^[^A-z0-9]//;	
+							}
+							my $back = "";
+							while ($token =~ /([^A-z0-9])$/) {
+								$back = "$1 $back";
+								$token =~ s/[^A-z0-9]$//;	
+							}
+
+							# 6: tag token
+							if ($token =~ /^$kecil$/) {
+								$token =~ s/$kecil/<$relk>$kecil<$relk>/;
+							} elsif ($token =~ /^$besar$/) {
+								$token =~ s/$besar/<$relb>$besar<$relb>/;
+							}
+
+							# update line
+							$line = "$line $token";
+							if (length $back > 0) {
+								$line = "$line $back";
+							}
 						}
 
-						$line =~ s/$besar/<$relb>$besar<$relb>/g;
-						if ($line =~ /[a-z\.\-0-9]<$relb>[a-z\.\-0-9]+<$relb>/) {
-							next;
-						}
-						if ($line =~ /<$relb>[a-z\.\-0-9]+<$relb>[a-z\.\-0-9]/) {
-							next;
-						}
-
-						if ($line =~ /></) {
-							next;
+						# 7: tulis ke file
+						if ($line =~ /$relk/) {
+							if ($line =~ /$relb/) {
+								$line = "<start>$line <end>\n";
+								$line =~ s/\s\s+/ /g;
+								print OUT $line;								
+							}
 						}
 
-						print OUT "$line\n";
 					}
 				}
 
