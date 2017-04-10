@@ -7,12 +7,13 @@ use warnings;
 my $EOS = "<EOS>";
 
 sub create_mapping {
-	my ($seed, $dump_file, $multi) = (@_);
+	my ($seed, $dump_file, $multi, $postag) = (@_);
 
 	print "create mapping:\n";
 	print "from: $seed\n";
 	print "to  : $dump_file\n";
 	print "multi? $multi\n";
+	print "postag? $postag\n"; 
 
 	open(IN, $seed) or die $!; 												
 	open(OUT, $dump_file) or die $!;	

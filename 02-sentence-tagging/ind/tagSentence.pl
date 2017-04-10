@@ -8,7 +8,7 @@ my $EOS = "<EOS>";
 my $globpath = "./../../00-data";
 
 sub tag_sentence {
-	my ($dir, $file, $rel, %map) = (@_);
+	my ($dir, $file, $rel, %map, $postag) = (@_);
 
 	# all necessary path
 	my $path = "$globpath/wiki/wiki-ind-s/$dir/$file";
@@ -43,8 +43,12 @@ sub tag_sentence {
 		$count += 1;
 
 		chop($l);
-		$l = lc $l; # 4: jadiin lowercase
-		$l =~ s/\(\)//g; # ini suka ada
+		if ($postag) {
+			#
+		} else {
+			# 4: jadiin lowercase
+			$l = lc $l; 
+		}
 
 		foreach my $kecil (keys %map) {
 			# jika mengandung seed <kecil>
@@ -61,48 +65,44 @@ sub tag_sentence {
 							if (length $token < 1) {
 								next;
 							}
-
-							# 5.5: tambahin rule jika token berhimpit dengan 1 karakter non alphanumeric
-							# hanya yang di depan/belakang aja
-							while ($token =~ /^([^A-z0-9])/) {
-								$line = "$line $1";
-								$token =~ s/^[^A-z0-9]//;	
-							}
 							my $back = "";
-							while ($token =~ /([^A-z0-9])$/) {
-								$back = "$1 $back";
-								$token =~ s/[^A-z0-9]$//;	
-							}
 
-							# 6: tag token
-							if ($token =~ /^$kecil$/) {
-								$token =~ s/$kecil/<$relk>$kecil<$relk>/;
-							} elsif ($token =~ /^$besar$/) {
-								$token =~ s/$besar/<$relb>$besar<$relb>/;
+							if ($postag) {
+								# 5.5: ambil word tanpa tag
+								if ($token =~ /^(.+)_/) {
+									# 6: tag token
+									if ($1 =~ /^$kecil$/) {
+										$token = "<$relk>$token<$relk>";
+									} elsif ($token =~ /^$besar$/) {
+										$token = "<$relb>$token<$relb>";
+									}
+								}
+							} else {	
+								# 6: tag token
+								if ($token =~ /^$kecil$/) {
+									$token =~ s/$kecil/<$relk>$kecil<$relk>/;
+								} elsif ($token =~ /^$besar$/) {
+									$token =~ s/$besar/<$relb>$besar<$relb>/;
+								}
 							}
 
 							# update line
 							$line = "$line $token";
-							if (length $back > 0) {
-								$line = "$line $back";
-							}
 						}
 
 						# 7: tulis ke file
 						if ($line =~ /$relk/) {
 							if ($line =~ /$relb/) {
-								$line = "<start>$line <end>\n";
-								$line =~ s/\s\s+/ /g;
-								print OUT $line;								
+								$line = "<start>$line <end>";
+
+								$line =~ s/\s+/ /g;
+								print OUT "$line\n";								
 							}
 						}
-
 					}
 				}
-
 			}
 		}
-
 	}
 
 	close(IN);
