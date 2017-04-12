@@ -93,10 +93,12 @@ sub tag_sentence {
 						# 7: tulis ke file
 						if ($line =~ /$relk/) {
 							if ($line =~ /$relb/) {
-								$line = "<start>$line <end>";
+								# $line = "<start>$line <end>";
 
 								$line =~ s/\s+/ /g;
-								print OUT "$line\n";								
+								if ($line =~ /\s(<start>.*)/) {
+									print OUT "$1\n";
+								}								
 							}
 						}
 					}

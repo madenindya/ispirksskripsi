@@ -33,19 +33,30 @@ sub split_all {
     open (IN, $opath);
     open (OUT, $cpath);
 
-
-    my $line;
-
     print "Split $opath\n";
+    my $line;
     while($line = <IN>) {
         # print "$line";
         if (length $line > 0) {
             
-            if ($line =~ /<doc.+>/) {
+            if ($line =~ /(<\/doc>)/) {
+                print OUT "$line\n";
                 next;
             }
 
+            $line =~ s/\[//g; # buang simbol siku
+            $line =~ s/\]//g; # buang simbol siku
+            $line =~ s/\(.*?\)//g; # buang yang ada dalam kurung. diasumsikan hanya kata/kalimat penjelas
+            
+
             my $sentence = split_nonAlphanumerical($line);
+            $sentence = "<start> $sentence";
+            if ($sentence =~ /\s$/) {
+                $sentence = "$sentence<end>";
+            } else {
+                $sentence = "$sentence <end>"
+            }
+            $line =~ s/[\s\t]+/\s/g;
 
             if (length($sentence) > 0) {
                 print OUT "$sentence\n";

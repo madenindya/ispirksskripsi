@@ -18,10 +18,7 @@ my $P = q/[\.!?]/;
 sub split_nonAlphanumerical {
 
     my($sentence) = @_;
-
-    $sentence =~ s/\(\)//g; # ini suka ada di beberapa dok Wiki
     my @tokens = split(/\s+/, $sentence);
-
     my $line = "";
 
     foreach my $token (@tokens) {
