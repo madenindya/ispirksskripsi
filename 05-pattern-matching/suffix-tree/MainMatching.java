@@ -10,11 +10,14 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.HashSet;
 
 import java.lang.Override;
 import java.util.Collections;
 import java.util.Comparator;
 
+// 01
 public class MainMatching {
 
     static Map<String, Seed> resultAll;
@@ -27,12 +30,22 @@ public class MainMatching {
         resultAll = new HashMap<>();
         cnt = 0;
 
-        System.out.println("Pattern file name: ");
-        String ipath = bf.readLine();
+        String ipath;
+        if (args.length < 1) {
+            System.out.println("Pattern file name: ");
+            ipath = bf.readLine();
+        } else {
+            ipath = args[0];
+        }
         pm = new PatternMatching(ipath);
 
-        System.out.println("Folder of folders to be read: ");
-        String path = bf.readLine();
+        String path;
+        if (args.length < 2) {
+            System.out.println("Folder of folders to be read: ");
+            path = bf.readLine();
+        } else {
+            path = args[1];
+        }
         // pattern matching
         File dir = new File(path);
         String[] sdir = dir.list();
@@ -42,37 +55,59 @@ public class MainMatching {
             System.out.println("Matching with " + pathsubdir);
             for (File f : subdir.listFiles()) {
                  String filepath = pathsubdir + "/" + f.getName();
-                 
+
                  findMatching(filepath);
             }
         }
 
-        System.out.println("File to be written: ");
-        String opath = bf.readLine();
+        String opath;
+        if (args.length < 3) {
+            System.out.println("File to be written: ");
+            opath = bf.readLine();
+        } else {
+            opath = args[2];
+        }
         printSortMap(resultAll, opath);
     }
 
+    // pattern matching a document 
     public static void findMatching(String fpath) throws IOException {
         BufferedReader bff = new BufferedReader(new FileReader(fpath));
         String sentence = bff.readLine();
-        while (sentence != null && sentence.length() > 0) {
 
-            // match one sentence
-            Map<String, Seed> resultOne = pm.matchAll(sentence);
-            for (String k : resultOne.keySet()) {
-                Seed cseed = resultOne.get(k);
-                if (resultAll.containsKey(k)) {
-                    Seed eseed = resultAll.get(k);
-                    eseed.count += cseed.count;
-                    eseed.patterns.addAll(cseed.patterns);
-                    eseed.sentences.addAll(cseed.sentences);
-                } else {
-                    resultAll.put(k, cseed);
+        Set<Seed> tmpSeeds = new HashSet<>();
+        while (sentence != null && sentence.length() > 0) {
+            if (sentence.contains("</doc>")) {
+                updateCountDocSeeds(tmpSeeds);
+                tmpSeeds = new HashSet<>();
+            } 
+            else {
+                // match one sentence to all pattern
+                Map<String, Seed> resultOne = pm.matchAll(sentence);
+                for (String k : resultOne.keySet()) {
+                    Seed cseed = resultOne.get(k);
+                    if (resultAll.containsKey(k)) {
+                        Seed eseed = resultAll.get(k);
+                        eseed.count += cseed.count;
+                        eseed.patterns.addAll(cseed.patterns);
+                        eseed.sentences.addAll(cseed.sentences);
+                        tmpSeeds.add(eseed);
+                    } else {
+                        resultAll.put(k, cseed);
+                        tmpSeeds.add(cseed);
+                    }
                 }
             }
+            // update sentence
             sentence = bff.readLine();
         }
         bff.close();
+    }
+
+    private static void updateCountDocSeeds(Set<Seed> lseed) {
+        for (Seed s : lseed) {
+            s.countDoc += 1;
+        }
     }
 
     public static void printSortMap(Map<String, Seed> m, String opath) throws IOException {

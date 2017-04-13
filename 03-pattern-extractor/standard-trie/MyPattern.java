@@ -29,12 +29,13 @@ public class MyPattern {
     }
 
     public int cmprTo(MyPattern p2) {
+        // berdasarkan sentence unik
         int c1 = this.sentences.size();
         int c2 = p2.sentences.size();
         if (c1 != c2) {
             return c2 - c1;
         }
-
+        // berdasarkan weight pattern
         double w1 = this.getWeight();
         double w2 = p2.getWeight();
         if (w1 > w2) {
@@ -43,7 +44,7 @@ public class MyPattern {
         if (w2 > 1) {
             return 1;
         }
-
+        // berdasarkan panjang pattern
         return this.pattern.split(" ").length - p2.pattern.split(" ").length;
     }
 

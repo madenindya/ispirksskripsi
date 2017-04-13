@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+// 02
 public class PatternMatching {
 
     List<List<String>> patterns;

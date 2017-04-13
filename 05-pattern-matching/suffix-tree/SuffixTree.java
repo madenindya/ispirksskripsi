@@ -8,11 +8,59 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+// 03
 public class SuffixTree {
     
     TNode root;
     public SuffixTree () {
         this.root = new TNode("^", "");
+    }
+
+    /**
+    *   FIND MATCH with A pattern sequence
+    */
+    Map<String, Seed> resultSeed;
+    public Map<String, Seed> findMatch(List<String> pseq) {
+        resultSeed = new HashMap<>();
+        for (String key : root.childs.keySet()) {
+            recursiveFind(pseq, 0, root.childs.get(key), "", "", "", "");
+        }
+        return resultSeed;
+    }
+    private void recursiveFind(List<String> pseq, int i, TNode node, String he, String ho, String heTag, String hoTag) {
+        if (i >= pseq.size() && (he.length() > 0 && ho.length() > 0)) {
+            // filter seed
+            if (he.equalsIgnoreCase(ho)) return;
+            // new seeds
+            Seed nseed = new Seed();
+            nseed.addName(he, ho);
+            nseed.addTag(heTag, hoTag);
+            nseed.count = 1;
+
+            String key = nseed.getKey();
+            if (resultSeed.containsKey(key)) {
+                resultSeed.get(key).count += 1;
+            } else {
+                resultSeed.put(key, nseed);                
+            }
+            return;
+        }
+        String cek = pseq.get(i);        
+        // harus merupakan noun || noun phrase
+        if (cek.equals("<hypernym>") && (node.postag.equals("NN") || node.postag.equals("NNP"))) { 
+            he = node.name;
+            heTag =  node.postag;
+        } else if (cek.equals("<hyponym>") && (node.postag.equals("NN") || node.postag.equals("NNP"))) {
+            ho = node.name;
+            hoTag =  node.postag;
+        } else {
+            if (!cek.equals(node.name)) {
+                return;
+            }
+        }
+        for (String key : node.childs.keySet()) {
+            recursiveFind(pseq, i+1, node.childs.get(key), he, ho, heTag, hoTag);
+        }
     }
 
     /**
@@ -55,7 +103,9 @@ public class SuffixTree {
             // others
             else {
                 Pair cpair = splitTag(tokens[i]);
-                if (filteredPair(cpair)) {}
+                if (filteredPair(cpair)) {
+                    prevTag = cpair.postag; // tetap update prevTag-nya
+                }
                 else if (cpair.postag.equals(prevTag)) {
                     Pair pvpair = sequence.get(sequence.size() - 1);
                     pvpair.lemma += " " + cpair.lemma;
@@ -66,53 +116,6 @@ public class SuffixTree {
             }
         }
         return sequence;
-    }
-
-    /**
-    *   FIND MATCH
-    */
-    Map<String, Seed> resultSeed;
-    public Map<String, Seed> findMatch(List<String> pseq) {
-        resultSeed = new HashMap<>();
-        for (String key : root.childs.keySet()) {
-            recursiveFind(pseq, 0, root.childs.get(key), "", "", "", "");
-        }
-        return resultSeed;
-    }
-    private void recursiveFind(List<String> pseq, int i, TNode node, String he, String ho, String heTag, String hoTag) {
-        if (i >= pseq.size() && (he.length() > 0 && ho.length() > 0)) {
-            // new seeds
-            Seed nseed = new Seed();
-            nseed.hypernym = he;
-            nseed.hypeTag = heTag;
-            nseed.hyponym = ho;
-            nseed.hypoTag = hoTag;
-            nseed.count = 1;
-
-            String key = nseed.getKey();
-            if (resultSeed.containsKey(key)) {
-                resultSeed.get(key).count += 1;
-            } else {
-                resultSeed.put(key, nseed);                
-            }
-            return;
-        }
-        String cek = pseq.get(i);        
-        // harus merupakan noun || noun phrase
-        if (cek.equals("<hypernym>") && (node.postag.equals("NN") || node.postag.equals("NNP"))) { 
-            he = node.name;
-            heTag =  node.postag;
-        } else if (cek.equals("<hyponym>") && (node.postag.equals("NN") || node.postag.equals("NNP"))) {
-            ho = node.name;
-            hoTag =  node.postag;
-        } else {
-            if (!cek.equals(node.name)) {
-                return;
-            }
-        }
-        for (String key : node.childs.keySet()) {
-            recursiveFind(pseq, i+1, node.childs.get(key), he, ho, heTag, hoTag);
-        }
     }
 
     /**
@@ -142,8 +145,11 @@ public class SuffixTree {
     */
     private static Pair splitTag(String lemma) {
         int n = lemma.lastIndexOf("_");
-        String l = lemma.substring(0, n);
         String pos = lemma.substring(n+1);
+        String l = lemma.substring(0, n);
+        if (!pos.equals("NNP")) { // bukan ProperNoun -> lower case
+            l = l.toLowerCase();
+        }
         return new Pair(l, pos);
     }
 
