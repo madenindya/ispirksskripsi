@@ -1,16 +1,4 @@
-00-data/wiki/wiki-ind
-00-data/wiki/wiki-ms
-00-data/wiki/wiki-ind-s
-00-data/wiki/wiki-ind-tagged
-00-data/dump-mapping/*.corpus
-00-data/identic/
-00-data/wn-31wn-bahasa/tmp*
-00-data/outputTree/
-00-data/wn-31
-00-data/seed
-
-wn-bahasa/data*
-output-tree
+00-data/
 tmp*
 *.class
 *.pyc
