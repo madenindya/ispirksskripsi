@@ -11,7 +11,7 @@ public class Seed {
     String hyponym;
     String hypoTag;
 
-    int count;
+    long count;
     Set<String> sentences;
     Set<String> patterns;
 
@@ -27,13 +27,16 @@ public class Seed {
 
     public String printAll() {
          return (this.getKey() + " ; " + count + " " + sentences.size() + " " + patterns.size());
-        // for (String p : patterns) {
-        //     System.out.println(p);
-        // }
     }
 
     public String getKey() {
         String key = "("+hyponym+"_"+hypoTag+","+hypernym+"_"+hypeTag+")";
         return key;
+    }
+
+    public int cmprTo(Seed s2) {
+        int n1 = this.sentences.size();
+        int n2 = s2.sentences.size();
+        return n2 - n1;
     }
 }

@@ -18,11 +18,12 @@ public class PatternMatching {
         loadPatterns(ipath);
     }
 
+    // match all pattern
     public Map<String, Seed> matchAll(String sentence) {
         // BUILD tree
         SuffixTree stree = new SuffixTree();
         stree.build(sentence); 
-
+        // MATCH pattern
         Map<String, Seed> fresult = new HashMap<>();
         for (int i = 0; i < patterns.size(); i++) {
             Map<String, Seed> seeds = matchOne(stree, patterns.get(i));
@@ -43,13 +44,14 @@ public class PatternMatching {
         return fresult;
     }
 
-    public Map<String, Seed> matchOne (SuffixTree stree, List<String> pattern) {
+    // match one pattern
+    private Map<String, Seed> matchOne (SuffixTree stree, List<String> pattern) {
         // find NEW SEEDS
         Map<String, Seed> seeds = stree.findMatch(pattern);
         return seeds;
     }
 
-    public void loadPatterns(String ipath) throws IOException {
+    private void loadPatterns(String ipath) throws IOException {
         patterns = new ArrayList<>();
         strpatterns = new ArrayList<>();
 

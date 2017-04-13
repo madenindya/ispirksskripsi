@@ -11,15 +11,21 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
+import java.lang.Override;
+import java.util.Collections;
+import java.util.Comparator;
+
 public class MainMatching {
 
     static Map<String, Seed> resultAll;
     static PatternMatching pm;
+    static int cnt;
 
     public static void main(String[] args) throws IOException {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         resultAll = new HashMap<>();
+        cnt = 0;
 
         System.out.println("Pattern file name: ");
         String ipath = bf.readLine();
@@ -43,23 +49,21 @@ public class MainMatching {
 
         System.out.println("File to be written: ");
         String opath = bf.readLine();
-        printMap(resultAll, opath);
+        printSortMap(resultAll, opath);
     }
 
     public static void findMatching(String fpath) throws IOException {
         BufferedReader bff = new BufferedReader(new FileReader(fpath));
-        String sentence = bff.readLine(); int cnt = 0;
+        String sentence = bff.readLine();
         while (sentence != null && sentence.length() > 0) {
-            cnt++;
-            if (cnt % 1000 == 0) { System.out.println(cnt); }
 
+            // match one sentence
             Map<String, Seed> resultOne = pm.matchAll(sentence);
             for (String k : resultOne.keySet()) {
                 Seed cseed = resultOne.get(k);
-                
                 if (resultAll.containsKey(k)) {
                     Seed eseed = resultAll.get(k);
-                    eseed.count += eseed.count;
+                    eseed.count += cseed.count;
                     eseed.patterns.addAll(cseed.patterns);
                     eseed.sentences.addAll(cseed.sentences);
                 } else {
@@ -71,11 +75,20 @@ public class MainMatching {
         bff.close();
     }
 
-    public static void printMap(Map<String, Seed> m, String opath) throws IOException {
+    public static void printSortMap(Map<String, Seed> m, String opath) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(opath));
+        List<Seed> sortSeeds = new ArrayList<>();
         for (String k : m.keySet()) {
-            String printed = m.get(k).printAll();
-            bw.write(printed + "\n");
+            sortSeeds.add(m.get(k));
+        }
+        Collections.sort(sortSeeds, new Comparator<Seed>() {
+            @Override
+            public int compare(Seed s1, Seed s2) {
+                return s1.cmprTo(s2);
+            }
+        });
+        for (Seed s : sortSeeds) {
+            bw.write(s.printAll() + "\n");
         }
         bw.close();
     }
