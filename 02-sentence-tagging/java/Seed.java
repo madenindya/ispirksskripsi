@@ -28,7 +28,7 @@ public class Seed {
         return true;
     }
 
-    public String getSeed() {
+    public String getString() {
         return "("+this.hyponym+","+this.hypernym+")";
     }
 }

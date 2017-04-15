@@ -17,9 +17,11 @@ public class SeedLoader {
             String s1 = line.split(" ; ")[0];
             s1 = s1.substring(1, s1.length() - 1);
             String[] tokens = s1.split(",");
+            // hyponym
             int n = tokens[0].lastIndexOf('_');
             String hyponym = tokens[0].substring(0,n);
-            n = tokens[0].lastIndexOf('_');
+            // hypernym
+            n = tokens[1].lastIndexOf('_');
             String hypernym = tokens[1].substring(0,n);
 
             Seed nseed = new Seed(hypernym, hyponym);

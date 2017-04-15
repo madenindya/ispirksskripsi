@@ -1,18 +1,63 @@
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 
 public class SentenceTagging {
 
+
+    /**
+    *   Tag all folder
+    *   - iDir = folder of folders
+    *   - oDir = folder of files
+    */ 
+    public void tagDir(String iDir, String nDir, Set<Seed> ss, String oDir) {
+        String dpath = iDir + "/" + nDir;
+        File dir = new File(dpath);
+
+        String opath = oDir + "/tagged_" + nDir;
+        BufferedWriter bw = new BufferedWriter(new FileWriter(opath));
+
+        for (File file : dir.listFiles()) {
+            fpath = dpath + "/" + file.getName;
+            tagFile(fpath, ss, bw);
+        }
+
+        bw.close();
+    }
+
+    /**
+    *   Tag a file
+    */ 
+    public void tagFile(String ipath, Set<Seed> ss, BufferedWriter bw) throws IOException {
+        BufferedReader bf = new BufferedReader(new FileReader(ipath));
+        String line = bf.readLine();
+        while (line != null) {
+            tagSentenceSeeds(line, ss, bw);
+            line = bf.readLine();
+        }
+        bf.close();
+    }
+
+    /**
+    *   Tag 1 sentence with all seed
+    *   - sentence NO TAG
+    */
+    private void tagSentenceSeeds(String line, Set<Seed> ss, BufferedWriter bw) throws IOException {
+        String sentence = line.toLowerCase();
+        for (Seed s : ss) {
+            tagSentence(sentence, s, bw);
+        }
+    }
+
     /**
     *   - Tag 1 sentence with 1 seed
-    *   - sentence NO TAG
     *   - sentence in lower case
     */        
-    public void tagSentence(String sentence, Seed s, BufferedWriter bw) {
+    private void tagSentence(String sentence, Seed s, BufferedWriter bw) throws IOException {
 
         // sentence --> <start> ... <end> --> bellow should be safe 
-        String hype = " " + s.hypernmy + " ";
+        String hype = " " + s.hypernym + " ";
         String hypo = " " + s.hyponym + " ";
 
         List<String> hasil = new ArrayList<>();
