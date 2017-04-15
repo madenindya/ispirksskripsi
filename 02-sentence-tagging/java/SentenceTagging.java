@@ -1,7 +1,12 @@
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.FileReader;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class SentenceTagging {
 
@@ -11,7 +16,7 @@ public class SentenceTagging {
     *   - iDir = folder of folders
     *   - oDir = folder of files
     */ 
-    public void tagDir(String iDir, String nDir, Set<Seed> ss, String oDir) {
+    public void tagDir(String iDir, String nDir, Set<Seed> ss, String oDir) throws IOException {
         String dpath = iDir + "/" + nDir;
         File dir = new File(dpath);
 
@@ -19,7 +24,7 @@ public class SentenceTagging {
         BufferedWriter bw = new BufferedWriter(new FileWriter(opath));
 
         for (File file : dir.listFiles()) {
-            fpath = dpath + "/" + file.getName;
+            String fpath = dpath + "/" + file.getName();
             tagFile(fpath, ss, bw);
         }
 
@@ -30,6 +35,7 @@ public class SentenceTagging {
     *   Tag a file
     */ 
     public void tagFile(String ipath, Set<Seed> ss, BufferedWriter bw) throws IOException {
+        System.out.println("Start tagging " + ipath + " ...");
         BufferedReader bf = new BufferedReader(new FileReader(ipath));
         String line = bf.readLine();
         while (line != null) {
@@ -45,7 +51,9 @@ public class SentenceTagging {
     */
     private void tagSentenceSeeds(String line, Set<Seed> ss, BufferedWriter bw) throws IOException {
         String sentence = line.toLowerCase();
+        System.out.println(sentence);
         for (Seed s : ss) {
+            System.out.println(s.hypernym + " " + s.hyponym);
             tagSentence(sentence, s, bw);
         }
     }
@@ -76,37 +84,61 @@ public class SentenceTagging {
                 String tmpHe = "";
                 // 3. split hypernym
                 if (noHo[i].contains(hype)) {
+                    // cek apakah ada di last
+                    boolean isInLast = false;
+                    if (noHo[i].substring(noHo[i].length() - hype.length()).equals(hype)) {
+                        isInLast = true;
+                    }
+                    System.out.println(isInLast);
+
                     conHe = true;
                     String[] noHe = noHo[i].split(hype);
                     tmpHe = noHe[0];
                     for (int j = 1; j < noHe.length; j++) {
                         // 4. simpan hypernym
                         tmpHe += " <hypernym>"+s.hypernym+"<hypernym> ";
-                        tmpHe += noHe[i];
+                        tmpHe += noHe[j];
+                    }
+
+                    if (isInLast) {
+                        tmpHe += " <hypernym>"+s.hypernym+"<hypernym> ";
                     }
                 } 
 
                 // 5. simpan hyponym
                 if (i == 0 && conHe) {
+                    System.out.println("1 --> " + tmpHe);
                     // specila case --> masukin tmpHe duluan
                     hasil.add(tmpHe);
                 } else {
-                    if (i != 0) 
+                    if (i != 0) {
+                        System.out.println("2 --> " + s.hyponym);
                         hasil.add("<hyponym>"+s.hyponym+"<hyponym>");
+                    }
 
-                    if (conHe) hasil.add(tmpHe);
-                    else hasil.add(noHo[i]);
+                    if (conHe) {
+                        System.out.println("3 --> " + tmpHe);
+                        hasil.add(tmpHe);
+                    }
+                    else {
+                        System.out.println("4 --> " + noHo[i]);
+                        hasil.add(noHo[i]);
+                    }
                 }
             }
         }
 
-        String fhasil = hasil.get(0);
-        for (int i = 1; i < hasil.size(); i++) {
-            fhasil += " " + hasil.get(i);
-        }
-        // print
-        if (fhasil.contains("<hypernym>") && fhasil.contains("<hyponym>")) {
-            bw.write(fhasil+"\n");
+        if (hasil.size() > 0) {
+            System.out.println("masuksini");
+            String fhasil = hasil.get(0);
+            for (int i = 1; i < hasil.size(); i++) {
+                fhasil += hasil.get(i);
+            }
+            // print
+            if (fhasil.contains("<hypernym>") && fhasil.contains("<hyponym>")) {
+                System.out.println("print");
+                bw.write(fhasil+"\n");
+            }  
         }
     }
 }
