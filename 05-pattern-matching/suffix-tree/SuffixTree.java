@@ -54,7 +54,7 @@ public class SuffixTree {
             ho = node.name;
             hoTag =  node.postag;
         } else {
-            if (!cek.equals(node.name)) {
+            if (!cek.equalsIgnoreCase(node.name)) {
                 return;
             }
         }
@@ -146,10 +146,10 @@ public class SuffixTree {
     private static Pair splitTag(String lemma) {
         int n = lemma.lastIndexOf("_");
         String pos = lemma.substring(n+1);
-        String l = lemma.substring(0, n);
-        if (!pos.equals("NNP")) { // bukan ProperNoun -> lower case
-            l = l.toLowerCase();
-        }
+        String l = lemma.substring(0, n).toLowerCase();
+        // if (!pos.equals("NNP")) { // bukan ProperNoun -> lower case
+        //     l = l.toLowerCase();
+        // }
         return new Pair(l, pos);
     }
 

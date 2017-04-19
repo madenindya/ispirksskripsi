@@ -100,6 +100,8 @@ public class SentenceTagging {
                         tmpHe += noHe[j];
                     }
 
+                    // 5. special case kalo ada di terakhir untuk hypernym
+                    // kalo hyponym gak mungkin terjadi karena ada <end>
                     if (isInLast) {
                         tmpHe += " <hypernym>"+s.hypernym+"<hypernym> ";
                     }

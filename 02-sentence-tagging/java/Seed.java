@@ -11,6 +11,7 @@ public class Seed {
         this.hyponym = ho.toLowerCase();
     }
 
+    // filter seed
     public boolean evaluateSeed() {
         String[] h1 = this.hyponym.split(" ");
         String[] h2 = this.hypernym.split(" ");
