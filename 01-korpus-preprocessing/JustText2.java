@@ -7,7 +7,7 @@ public class JustText2 {
     // input folder wiki-ind-s-postag
     public static void main(String[] args) throws IOException {
 
-        String path = args[0]; // folder of folders
+        String path = "../00-data/wiki/wiki-ind-s-postag"; // folder of folders
 
         File dir = new File(path);
         String[] sdir = dir.list();
@@ -107,6 +107,7 @@ public class JustText2 {
     }
 
     private static boolean filteredPair(Pair p) {
+        if (p.lemma.length() == 1) return true;
         // check apakah ada alphanumeric alphanumerical
         Pattern pt = Pattern.compile("[a-zA-Z0-9]");
         boolean nonAlphanumerical = !(pt.matcher(p.lemma).find());

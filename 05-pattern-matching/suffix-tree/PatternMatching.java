@@ -23,7 +23,7 @@ public class PatternMatching {
     public Map<String, Seed> matchAll(String sentence) {
         // BUILD tree
         SuffixTree stree = new SuffixTree();
-        stree.build(sentence); 
+        stree.build(sentence);
         // MATCH pattern
         Map<String, Seed> fresult = new HashMap<>();
         for (int i = 0; i < patterns.size(); i++) {

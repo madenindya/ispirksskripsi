@@ -18,6 +18,7 @@ public class SuffixTree {
 
     /**
     *   FIND MATCH with A pattern sequence
+    *   RETURN SEED
     */
     Map<String, Seed> resultSeed;
     public Map<String, Seed> findMatch(List<String> pseq) {
@@ -31,6 +32,7 @@ public class SuffixTree {
         if (i >= pseq.size() && (he.length() > 0 && ho.length() > 0)) {
             // filter seed
             if (he.equalsIgnoreCase(ho)) return;
+            if (bannedSeed(he, ho)) return;
             // new seeds
             Seed nseed = new Seed();
             nseed.addName(he, ho);
@@ -53,7 +55,8 @@ public class SuffixTree {
         } else if (cek.equals("<hyponym>") && (node.postag.equals("NN") || node.postag.equals("NNP"))) {
             ho = node.name;
             hoTag =  node.postag;
-        } else {
+        } 
+        else {
             if (!cek.equalsIgnoreCase(node.name)) {
                 return;
             }
@@ -61,6 +64,11 @@ public class SuffixTree {
         for (String key : node.childs.keySet()) {
             recursiveFind(pseq, i+1, node.childs.get(key), he, ho, heTag, hoTag);
         }
+    }
+    private boolean bannedSeed(String hypernym, String hyponym) {
+        if (hyponym.equalsIgnoreCase("berikut")) {}
+        if (hypernym.equalsIgnoreCase("daftar") || hypernym.contains("daftar ")) {}
+        return false;
     }
 
     /**

@@ -1,4 +1,5 @@
 #!/bin/bash
+
 java MainMatching tmppattern/pattern04 ../../00-data/wiki/wiki-ind-s-postag tmpseedspool/seedpattern01
 java MainMatching tmppattern/pattern04 ../../00-data/wiki/wiki-ind-s-postag tmpseedspool/seedpattern02
 java MainMatching tmppattern/pattern04 ../../00-data/wiki/wiki-ind-s-postag tmpseedspool/seedpattern03
