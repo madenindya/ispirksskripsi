@@ -45,3 +45,7 @@ SEMI SUPERVISED:
 	- POS TAG -> ?
 - Masukin ke corpus
 - iterasi 1: ambil hasilnya aja sebagai seed -> buang seed2 yg mengandung lemma melayu
+
+03-Rancangan metodologi
+Filterisasi Seed
+	Pendekatan berikutnya adalah berdasarkan similarity score antar dua synset. Untuk mengatasi masalah ambiguitas dimana adanya kemunculan lebih dari satu hypernym, namun untuk menambah jumlah seed, diambil pasangan synset yang memiliki similarity score terbesar. Similarity score ini dihitung menggunakan Resnik Similarity yang telah tersedia dari tools nltk.

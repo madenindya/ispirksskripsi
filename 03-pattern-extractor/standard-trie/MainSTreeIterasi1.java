@@ -11,9 +11,9 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
-// java MainSTree tmpkorpustag tmpfilepattern/outputfile
+// java MainSTree tmpkorpustag tmpfilepattern
 // korpustag hypernym-hyponym no postag
-public class MainSTree {
+public class MainSTreeIterasi1 {
 
     static SeqBuilder sb;
     static Map<String, MyPattern> unik;

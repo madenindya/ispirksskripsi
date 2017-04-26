@@ -4,12 +4,15 @@ import java.io.*;
 public class TidifyPostagResult {
 
     public static void main(String[] args) throws IOException {
+        // java TidifyPostagResult /media/madenindya/42C0191EC01919AD/Skripsi-fix-data/wiki-ind-s-postag-messy ../00-data/wiki/wiki-ind-s-postag
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Folder of folders input name: ");
-        String dpath = bf.readLine();
+        // String dpath = bf.readLine();
+        String dpath = args[0];
         System.out.println("Folder of folders output name: ");
-        String rpath = bf.readLine();
+        // String rpath = bf.readLine();
+        String rpath = args[1];
 
 
         // iterate dir of dir
@@ -37,16 +40,17 @@ public class TidifyPostagResult {
             String[] tokens = line.split(" ");
 
             for (int i = 0; i < tokens.length; i++) {
+                String token = fixTag(tokens[i], i); // fix some tags
                 // special
-                if (tokens[i].contains("<start>")) {
-                    bw.write(tokens[i]);
-                } else if (tokens[i].contains("<end>")) {
-                    bw.write(" " + tokens[i] + "\n");
-                } else if (tokens[i].contains("</doc>")) {
-                    bw.write(tokens[i] + "\n");
+                if (token.contains("<start>")) {
+                    bw.write(token);
+                } else if (token.contains("<end>")) {
+                    bw.write(" " + token + "\n");
+                } else if (token.contains("</doc>")) {
+                    bw.write(token + "\n");
                 } // commoners
-                else {
-                    bw.write(" " + tokens[i]);
+                else if (token.length() > 0) {
+                    bw.write(" " + token);
                 }                 
             }
 
@@ -54,5 +58,31 @@ public class TidifyPostagResult {
         }
 
         bw.close();
+    }
+
+    public static String fixTag(String term, int pos) {
+        int last = term.lastIndexOf('_');
+        if (last == -1 ) {
+            System.out.println(term);
+            return "";
+        }
+        String word = term.substring(0, last);
+        String tag = term.substring(last+1);
+
+        if (word.equalsIgnoreCase("<start>") || word.equalsIgnoreCase("<end>") || word.equalsIgnoreCase("</doc>")) {
+            word += "_X";
+        } else if (word.length() > 5 && word.substring(0,3).equalsIgnoreCase("ber")) {
+            if ((word.charAt(0) == 'b' && tag.equalsIgnoreCase("NNP")) 
+                || tag.equalsIgnoreCase("NN")) {
+                word += "_VB"; 
+            } else {
+                word = term;
+            }
+        } 
+        else {
+            word = term;
+        }
+
+        return word;
     }
 }

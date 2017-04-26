@@ -32,7 +32,7 @@ public class SuffixTree {
         if (i >= pseq.size() && (he.length() > 0 && ho.length() > 0)) {
             // filter seed
             if (he.equalsIgnoreCase(ho)) return;
-            if (bannedSeed(he, ho)) return;
+            // if (bannedSeed(he, ho)) return;
             // new seeds
             Seed nseed = new Seed();
             nseed.addName(he, ho);
@@ -65,11 +65,13 @@ public class SuffixTree {
             recursiveFind(pseq, i+1, node.childs.get(key), he, ho, heTag, hoTag);
         }
     }
-    private boolean bannedSeed(String hypernym, String hyponym) {
-        if (hyponym.equalsIgnoreCase("berikut")) {}
-        if (hypernym.equalsIgnoreCase("daftar") || hypernym.contains("daftar ")) {}
-        return false;
-    }
+    // private boolean bannedSeed(String hypernym, String hyponym) {
+    //     // pattern '<start> <hyponym> adalah <hypernym>'
+    //     if (hyponym.equalsIgnoreCase("berikut")) {}
+    //     if (hypernym.equalsIgnoreCase("daftar") || hypernym.contains("daftar ")) {}
+    //     if (hypernym.equalsIgnoreCase("bagian") || hypernym.contains("bagian ")) {}
+    //     return false;
+    // }
 
     /**
     *   BUILD TREE for a SENTENCE

@@ -21,6 +21,20 @@ public class Seed {
     double maxPosInDoc;
     double avgPosInDoc;
 
+    String[] parrs = {
+        "<start> <hyponym> adalah <hypernym>",
+        "<hyponym> merupakan <hypernym>",
+        "<hyponym> adalah <hypernym> yang",
+        "<hypernym> seperti <hyponym> dan",
+        "<hypernym> termasuk <hyponym>"
+        // "<hyponym> di <hypernym>", 
+        // "<hypernym> yunani <hyponym>",
+        // "<hyponym> adalah sebuah <hypernym>",
+        // "<hyponym> atau adalah <hypernym>",
+        // "<hypernym> fenisia menghasilkan alfabet yunani <hyponym>"
+    };
+
+
     public Seed() {
         sentences = new HashSet<>();
         patterns = new HashSet<>();
@@ -33,7 +47,15 @@ public class Seed {
     }
 
     public String printAll() {
-         return (this.getKey() + " ; " + this.count + " " + sentences.size() + " " + patterns.size()) + " " + this.countDoc;
+        String pvec = "";
+        for (int i = 0; i < parrs.length; i++) {
+            if(patterns.contains(parrs[i])) {
+                pvec += " 1"; 
+            } else {
+                pvec += " 0";
+            }
+        }
+        return (this.getKey() + " ; " + this.count + " " + sentences.size() + " " + patterns.size()) + " " + this.countDoc + pvec;
     }
 
     public String getKey() {

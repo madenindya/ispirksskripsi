@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 // 01
+// java MainMatching tmppattern/pattern01 ../../00-data/wiki/wiki-ind-s-postag  tmpseedspool/seedpattern01-1
 public class MainMatching {
 
     static Map<String, Seed> resultAll;
@@ -124,6 +125,11 @@ public class MainMatching {
         });
         for (Seed s : sortSeeds) {
             bw.write(s.printAll() + "\n");
+            if (s.hypernym.equals("negara") && s.hyponym.equals("amerika serikat")) {
+                for (String str : s.patterns) {
+                    System.out.println(str);
+                }
+            }
         }
         bw.close();
     }
