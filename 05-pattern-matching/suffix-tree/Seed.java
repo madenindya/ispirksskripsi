@@ -27,11 +27,6 @@ public class Seed {
         "<hyponym> adalah <hypernym> yang",
         "<hypernym> seperti <hyponym> dan",
         "<hypernym> termasuk <hyponym>"
-        // "<hyponym> di <hypernym>", 
-        // "<hypernym> yunani <hyponym>",
-        // "<hyponym> adalah sebuah <hypernym>",
-        // "<hyponym> atau adalah <hypernym>",
-        // "<hypernym> fenisia menghasilkan alfabet yunani <hyponym>"
     };
 
 

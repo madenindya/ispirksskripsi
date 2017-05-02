@@ -11,9 +11,9 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
-// java MainSTree tmpkorpustag tmpfilepattern
+// java MainSTreeIterasi1 tmpattern/nama_file
 // korpustag hypernym-hyponym no postag
-public class MainSTreeIterasi1 {
+public class MainIterasi1 {
 
     static SeqBuilder sb;
     static Map<String, MyPattern> unik;
@@ -21,29 +21,25 @@ public class MainSTreeIterasi1 {
 
     public static void main(String[] args) throws IOException {
 
+        // default
+        int min = 3;
+        
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        String opath;
+        try {
+            opath = args[0];
+        } catch(Exception e) {
+            System.out.println("output file:");
+            opath = bf.readLine();    
+        }
+
+        // START - samelemma
+        System.out.println("\nSameLemma");
         sb = new SeqBuilder();
         unik = new HashMap<>();
         tmpunik = new HashSet<>();     
 
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        String path;
-        if (args[0] == null) {
-            System.out.println("input folder (ex: /home/madenindya):");
-            path = bf.readLine();        
-        } else {
-            path = args[0];
-        }
-
-        System.out.println("output file:");
-        String opath;
-        if (args[1] == null) {
-            opath = bf.readLine();
-        } else {
-            opath = args[1];
-        }
-
-        // default
-        int min = 3;
+        String path = "../../00-data/wiki/wiki-ind-tagged-sameLemma/hh";
 
         // in-between builder
         System.out.println("Find in-between pattern");
@@ -59,12 +55,56 @@ public class MainSTreeIterasi1 {
             unikfy(hasilBaru);
             count++;
         }
+        // END - samelemma
 
-        // HASIL 
+        // simpan dalam temporary
+        Map<String, MyPattern> hasil1 = new HashMap<>();
+        for (String k : unik.keySet()) {
+            hasil1.put(k, unik.get(k));
+        }
+
+        // START - strict
+        System.out.println("\nStrict");
+        sb = new SeqBuilder();
+        unik = new HashMap<>();
+        tmpunik = new HashSet<>();     
+
+        path = "../../00-data/wiki/wiki-ind-tagged-strict/hh";
+
+        // in-between builder
+        System.out.println("Find in-between pattern");
+        hasil = findPattern(path, 0, 0, min);
+        unikfy(hasil);
+        // n-before/after builder
+        count = 1;
+        while (tmpunik.size() > 0 && count < 3) {
+            System.out.println("Find "+count+"-before/after pattern");
+            List<MyPattern> hasilBefore = findPattern(path, 1, count, min);
+            List<MyPattern> hasilAfter = findPattern(path, 2, count, min);
+            List<MyPattern> hasilBaru = cekNeeded(hasilBefore, hasilAfter);
+            unikfy(hasilBaru);
+            count++;
+        }
+        // END - strict
+
+
+        // COMBINE sameLemma - strict
+        System.out.println("SameLemma -> " + hasil1.size());
+        System.out.println("Strict -> " + unik.size());
         List<MyPattern> ppatterns = new ArrayList<>();
         for (String k : unik.keySet()) {
-            ppatterns.add(unik.get(k));
+            if (hasil1.containsKey(k)) {
+                if (hasil1.get(k).cmprTo(unik.get(k)) > 0) {
+                    ppatterns.add(unik.get(k));
+                } else {
+                    ppatterns.add(hasil1.get(k));
+                }
+            }
         }
+
+        // HASIL
+        Set<String> filteredPair = new HashSet<>();
+        List<String> filteredPattern = new ArrayList<>();
         Collections.sort(ppatterns, new Comparator<MyPattern>() {
             @Override
             public int compare(MyPattern p1, MyPattern p2) {
@@ -73,8 +113,29 @@ public class MainSTreeIterasi1 {
         });
         // write to file
         BufferedWriter bw = new BufferedWriter(new FileWriter(opath));
+        int ccount = 0;
         for (MyPattern mp : ppatterns) {
             bw.write(mp.getStr() + "\n");
+            // simpan seed yang TOP 5
+            if (ccount < 5) {
+                for (String fs : mp.seeds) {
+                    filteredPair.add(fs);
+                }
+                System.out.println(mp.getStr());
+                filteredPattern.add(mp.pattern);
+                ccount++;
+            }
+        }
+        bw.close();
+
+        bw = new BufferedWriter(new FileWriter("../../00-data/korpus-kata/iterasi-0.korpus"));
+        for (String fp : filteredPair) {
+            bw.write(fp+"\n");
+        }
+        bw.close();
+        bw = new BufferedWriter(new FileWriter("tmpattern/iterasi-1-selected.pattern"));
+        for (String fp : filteredPattern) {
+            bw.write(fp+"\n");
         }
         bw.close();
     }

@@ -73,20 +73,20 @@ public class MyPattern {
         return result.substring(1);
     }
 
-    public void combinedPattern (MyPattern p2) {
-        if (!this.pattern.equals(p2.pattern)) return;
+    // public void combinedPattern (MyPattern p2) {
+    //     if (!this.pattern.equals(p2.pattern)) return;
 
-        int count1 = 0;
-        for (String s : p2.seeds) {
-            if (this.seeds.add(s)) count1++;
-        }
-        int count2 = 0;
-        for (String s : p2.sentences) {
-            if (this.sentences.add(s)) count2++;
-        }
-        if (count1 > count2)
-            this.count += count1;
-        else
-            this.count += count2;
-    } // ?????????????????
+    //     int count1 = 0;
+    //     for (String s : p2.seeds) {
+    //         if (this.seeds.add(s)) count1++;
+    //     }
+    //     int count2 = 0;
+    //     for (String s : p2.sentences) {
+    //         if (this.sentences.add(s)) count2++;
+    //     }
+    //     if (count1 > count2)
+    //         this.count += count1;
+    //     else
+    //         this.count += count2;
+    // } // ?????????????????
 }
