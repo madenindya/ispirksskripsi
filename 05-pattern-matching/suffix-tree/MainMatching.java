@@ -18,7 +18,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 // 01
-// java MainMatching tmppattern/pattern01 ../../00-data/wiki/wiki-ind-s-postag  tmpseedspool/seedpattern01-1
+// java MainMatching ../../03-pattern-extractor/standard-trie/tmpattern/iterasi-1-selected.pattern ../../00-data/wiki/wiki-ind-s-postag  tmpseedspool/iterasi-1
 public class MainMatching {
 
     static Map<String, Seed> resultAll;
@@ -32,21 +32,22 @@ public class MainMatching {
         cnt = 0;
 
         String ipath;
-        if (args.length < 1) {
+        try {
+            ipath = args[0];
+        } catch (Exception e) {
             System.out.println("Pattern file name: ");
             ipath = bf.readLine();
-        } else {
-            ipath = args[0];
         }
         pm = new PatternMatching(ipath);
 
         String path;
-        if (args.length < 2) {
-            System.out.println("Folder of folders to be read: ");
-            path = bf.readLine();
-        } else {
+        try {
             path = args[1];
+        } catch (Exception e) {
+            System.out.println("Folder of folders to be read: ");
+            path = bf.readLine();           
         }
+
         // pattern matching
         File dir = new File(path);
         String[] sdir = dir.list();
@@ -62,11 +63,11 @@ public class MainMatching {
         }
 
         String opath;
-        if (args.length < 3) {
-            System.out.println("File to be written: ");
-            opath = bf.readLine();
-        } else {
+        try {
             opath = args[2];
+        } catch (Exception e) {
+            System.out.println("File to be written: ");
+            opath = bf.readLine();           
         }
         printSortMap(resultAll, opath);
     }
@@ -112,7 +113,8 @@ public class MainMatching {
     }
 
     public static void printSortMap(Map<String, Seed> m, String opath) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter(opath));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(opath+".seed"));
+        BufferedWriter bw2 = new BufferedWriter(new FileWriter(opath+"-filter-1ruleBased.seed"));
         List<Seed> sortSeeds = new ArrayList<>();
         for (String k : m.keySet()) {
             sortSeeds.add(m.get(k));
@@ -125,12 +127,12 @@ public class MainMatching {
         });
         for (Seed s : sortSeeds) {
             bw.write(s.printAll() + "\n");
-            if (s.hypernym.equals("negara") && s.hyponym.equals("amerika serikat")) {
-                for (String str : s.patterns) {
-                    System.out.println(str);
-                }
+            // FILTER: Rule-based 1 -> harus dibentuk > 1 pattern
+            if (s.patterns.size() > 1) {
+                bw2.write(s.printAll() + "\n");
             }
         }
         bw.close();
+        bw2.close();
     }
 }

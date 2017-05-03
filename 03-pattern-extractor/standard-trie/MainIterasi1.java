@@ -112,7 +112,7 @@ public class MainIterasi1 {
             }
         });
         // write to file
-        BufferedWriter bw = new BufferedWriter(new FileWriter(opath));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(opath+".pattern"));
         int ccount = 0;
         for (MyPattern mp : ppatterns) {
             bw.write(mp.getStr() + "\n");
@@ -133,7 +133,7 @@ public class MainIterasi1 {
             bw.write(fp+"\n");
         }
         bw.close();
-        bw = new BufferedWriter(new FileWriter("tmpattern/iterasi-1-selected.pattern"));
+        bw = new BufferedWriter(new FileWriter(opath+"-selected.pattern"));
         for (String fp : filteredPattern) {
             bw.write(fp+"\n");
         }

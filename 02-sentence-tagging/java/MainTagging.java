@@ -3,7 +3,7 @@ import java.io.*;
 
 public class MainTagging {
     
-    // java MainTagging <seed_file_name> <output_folder_name>
+    // java MainTagging <seed_file_name> <input_folder_name> <output_folder_name>
     public static void main(String[] args) throws IOException {
     
         SeedLoader sl = new SeedLoader();
@@ -12,7 +12,7 @@ public class MainTagging {
         // build seed
         String spath = args[0];
         Set<Seed> seeds = sl.loadAllSeeds(spath);
-        printSetSeed(seeds);
+        // printSetSeed(seeds);
 
         // tag sentence
         String dirpath = args[1];
@@ -29,6 +29,5 @@ public class MainTagging {
             System.out.println(s.getString());
         }
     }
-
 
 }

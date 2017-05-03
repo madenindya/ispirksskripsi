@@ -51,9 +51,9 @@ public class SentenceTagging {
     */
     private void tagSentenceSeeds(String line, Set<Seed> ss, BufferedWriter bw) throws IOException {
         String sentence = line.toLowerCase();
-        System.out.println(sentence);
+        // System.out.println(sentence);
         for (Seed s : ss) {
-            System.out.println(s.hypernym + " " + s.hyponym);
+            // System.out.println(s.hypernym + " " + s.hyponym);
             tagSentence(sentence, s, bw);
         }
     }
@@ -89,7 +89,7 @@ public class SentenceTagging {
                     if (noHo[i].substring(noHo[i].length() - hype.length()).equals(hype)) {
                         isInLast = true;
                     }
-                    System.out.println(isInLast);
+                    // System.out.println(isInLast);
 
                     conHe = true;
                     String[] noHe = noHo[i].split(hype);
@@ -109,21 +109,21 @@ public class SentenceTagging {
 
                 // 5. simpan hyponym
                 if (i == 0 && conHe) {
-                    System.out.println("1 --> " + tmpHe);
+                    // System.out.println("1 --> " + tmpHe);
                     // specila case --> masukin tmpHe duluan
                     hasil.add(tmpHe);
                 } else {
                     if (i != 0) {
-                        System.out.println("2 --> " + s.hyponym);
+                        // System.out.println("2 --> " + s.hyponym);
                         hasil.add("<hyponym>"+s.hyponym+"<hyponym>");
                     }
 
                     if (conHe) {
-                        System.out.println("3 --> " + tmpHe);
+                        // System.out.println("3 --> " + tmpHe);
                         hasil.add(tmpHe);
                     }
                     else {
-                        System.out.println("4 --> " + noHo[i]);
+                        // System.out.println("4 --> " + noHo[i]);
                         hasil.add(noHo[i]);
                     }
                 }
@@ -131,14 +131,12 @@ public class SentenceTagging {
         }
 
         if (hasil.size() > 0) {
-            System.out.println("masuksini");
             String fhasil = hasil.get(0);
             for (int i = 1; i < hasil.size(); i++) {
                 fhasil += hasil.get(i);
             }
             // print
             if (fhasil.contains("<hypernym>") && fhasil.contains("<hyponym>")) {
-                System.out.println("print");
                 bw.write(fhasil+"\n");
             }  
         }

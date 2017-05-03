@@ -76,7 +76,7 @@ public class Trie {
 
 	private void updateLeaf(TNode node, String hypernym, String hyponym, String sentence) {
 		if (hypernym.length() < 1 || hyponym.length() < 1) return;
-		String krel = "("+hyponym+","+hypernym+")";
+		String krel = "("+hyponym+";"+hypernym+")";
 		node.seeds.add(krel);
 		node.sentences.add(sentence);
 	}

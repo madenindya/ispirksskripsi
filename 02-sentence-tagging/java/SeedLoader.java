@@ -14,15 +14,12 @@ public class SeedLoader {
         // (Sukorejo_NNP,desa_NN) ; 31 31 1
         while(line != null) {
 
-            String s1 = line.split(" ; ")[0];
-            s1 = s1.substring(1, s1.length() - 1);
-            String[] tokens = s1.split(",");
+            String s1 = line.substring(1, line.length() - 1);
+            String[] tokens = s1.split(";");
             // hyponym
-            int n = tokens[0].lastIndexOf('_');
-            String hyponym = tokens[0].substring(0,n);
+            String hyponym = tokens[0];
             // hypernym
-            n = tokens[1].lastIndexOf('_');
-            String hypernym = tokens[1].substring(0,n);
+            String hypernym = tokens[1];
 
             Seed nseed = new Seed(hypernym, hyponym);
             if (nseed.evaluateSeed()) {

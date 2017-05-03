@@ -27,19 +27,27 @@ public class MainSTree {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         String path;
-        if (args[0] == null) {
-            System.out.println("input folder (ex: /home/madenindya):");
-            path = bf.readLine();        
-        } else {
+        try {
             path = args[0];
+        } catch (Exception e) {
+            System.out.println("input folder (ex: /home/madenindya):");
+            path = bf.readLine(); 
         }
 
-        System.out.println("output file:");
         String opath;
-        if (args[1] == null) {
-            opath = bf.readLine();
-        } else {
+        try {
             opath = args[1];
+        } catch (Exception e) {
+            System.out.println("output file:");
+            opath = bf.readLine();
+        }
+
+        int iterasike;
+        try {
+            iterasike = Integer.parseInt(args[2]);
+        } catch (Exception e) {
+            System.out.println("iterasi ke: ");
+            iterasike = Integer.parseInt(bf.readLine());
         }
 
         // default
@@ -71,10 +79,32 @@ public class MainSTree {
                 return p1.cmprTo(p2);
             }
         });
+        // old pattern
+        Set<String> patterns = new HashSet<>();
+        BufferedReader bff = new BufferedReader(new FileReader("tmpattern/iterasi-"+(iterasike-1)+"-selected.pattern"));
+        String line = bff.readLine();
+        while (line != null) {
+            patterns.add(line.trim());
+            line = bff.readLine();
+        }
+        bff.close();
         // write to file
-        BufferedWriter bw = new BufferedWriter(new FileWriter(opath));
+        boolean hasNew = false;
+        BufferedWriter bw = new BufferedWriter(new FileWriter(opath+".pattern"));
         for (MyPattern mp : ppatterns) {
+            if (!hasNew) {
+                if (!patterns.contains(mp.pattern)) {
+                    patterns.add(mp.pattern);
+                    hasNew = true;
+                }
+            }
             bw.write(mp.getStr() + "\n");
+        }
+        bw.close();
+        // write selected
+        bw = new BufferedWriter(new FileWriter(opath+"-selected.pattern"));
+        for (String p : patterns) {
+            bw.write(p+"\n");
         }
         bw.close();
     }

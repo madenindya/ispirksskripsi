@@ -50,11 +50,11 @@ public class Seed {
                 pvec += " 0";
             }
         }
-        return (this.getKey() + " ; " + this.count + " " + sentences.size() + " " + patterns.size()) + " " + this.countDoc + pvec;
+        return (this.getKey() + " # " + this.count + " " + sentences.size() + " " + patterns.size()) + " " + this.countDoc + pvec;
     }
 
     public String getKey() {
-        String key = "("+hyponym+"_"+hypoTag+","+hypernym+"_"+hypeTag+")";
+        String key = "("+hyponym+"_"+hypoTag+";"+hypernym+"_"+hypeTag+")";
         return key;
     }
 
