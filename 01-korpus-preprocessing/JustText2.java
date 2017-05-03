@@ -26,7 +26,7 @@ public class JustText2 {
     }
 
 
-    private static void cleanAll(String ipath   , int count) throws IOException {
+    private static void cleanAll(String ipath, int count) throws IOException {
         BufferedReader bf = new BufferedReader(new FileReader(ipath));        
         String opath = "../00-data/wiki/wiki-ind-js2-lowcase/wiki_";
         if (count < 10) {
@@ -60,7 +60,41 @@ public class JustText2 {
     private static void printSentence(List<Pair> ls, BufferedWriter bw) throws IOException {
         String s = "";
         for (Pair p : ls) {
-            s += " " + p.lemma;
+            if (p.lemma.contains("_")) {
+                
+                String[] hearr = p.lemma.split("_");
+                int begin = 0;
+                int end = hearr.length;
+                if (end == 0) continue;
+                if (hearr[end-1].equals("-rrb-") || hearr[end-1].equals("asal") ||
+                    hearr[end-1].equals("saat")) {
+                    end--;
+                }
+                if (hearr[0].equals("jenis") || hearr[0].equals("sejenis") || hearr[0].equals("sekelompok") ||
+                    hearr[0].equals("sekumpulan") || hearr[0].equals("semacam") || hearr[0].equals("seperangkat")) {
+                    begin = 1;
+                }
+                String he = hearr[begin];
+                for (int i = begin + 1; i < end; i++) {
+                    he += "_" + hearr[i];
+                }
+
+                if (begin == 0 && end == hearr.length) {
+                    s += " " + p.lemma;
+                } else {
+                    if (begin != 0) {
+                        s += " " + hearr[0];
+                    } 
+                    if (begin != 0 || end != hearr.length) {
+                        s += " " + he;
+                    }
+                    if (end != hearr.length) {
+                        s += " " + hearr[hearr.length-1];
+                    }   
+                }
+            } else {
+                s += " " + p.lemma;   
+            }
         }
         if (s.length() > 0) {
             bw.write(s.substring(1) + "\n");
@@ -108,8 +142,9 @@ public class JustText2 {
 
     private static boolean filteredPair(Pair p) {
         if (p.lemma.length() == 1) return true;
+        if (p.lemma.equals("\'\'")) return true;
         // check apakah ada alphanumeric alphanumerical
-        Pattern pt = Pattern.compile("[a-zA-Z0-9]");
+        Pattern pt = Pattern.compile(".*[a-zA-Z0-9].*");
         boolean nonAlphanumerical = !(pt.matcher(p.lemma).find());
         return nonAlphanumerical;
     }

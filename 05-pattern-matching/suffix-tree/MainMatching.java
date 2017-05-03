@@ -18,7 +18,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 // 01
-// java MainMatching ../../03-pattern-extractor/standard-trie/tmpattern/iterasi-1-selected.pattern ../../00-data/wiki/wiki-ind-s-postag  tmpseedspool/iterasi-1
+// java MainMatching ../../03-pattern-extractor/standard-trie/tmpattern/iterasi-1-selected.pattern ../../00-data/wiki/wiki-ind-s-postag tmpseedspool/iterasi-1
 public class MainMatching {
 
     static Map<String, Seed> resultAll;
@@ -39,6 +39,10 @@ public class MainMatching {
             ipath = bf.readLine();
         }
         pm = new PatternMatching(ipath);
+        String patternss[] = new String[pm.strpatterns.size()];
+        for (int i = 0; i < pm.strpatterns.size(); i++) {
+            patternss[i] = pm.strpatterns.get(i);
+        }
 
         String path;
         try {
@@ -69,7 +73,7 @@ public class MainMatching {
             System.out.println("File to be written: ");
             opath = bf.readLine();           
         }
-        printSortMap(resultAll, opath);
+        printSortMap(resultAll, opath, patternss);
     }
 
     // pattern matching a document 
@@ -112,7 +116,7 @@ public class MainMatching {
         }
     }
 
-    public static void printSortMap(Map<String, Seed> m, String opath) throws IOException {
+    public static void printSortMap(Map<String, Seed> m, String opath, String[] patternss) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(opath+".seed"));
         BufferedWriter bw2 = new BufferedWriter(new FileWriter(opath+"-filter-1ruleBased.seed"));
         List<Seed> sortSeeds = new ArrayList<>();
@@ -126,10 +130,10 @@ public class MainMatching {
             }
         });
         for (Seed s : sortSeeds) {
-            bw.write(s.printAll() + "\n");
+            bw.write(s.printAll(patternss) + "\n");
             // FILTER: Rule-based 1 -> harus dibentuk > 1 pattern
             if (s.patterns.size() > 1) {
-                bw2.write(s.printAll() + "\n");
+                bw2.write(s.printAll(patternss) + "\n");
             }
         }
         bw.close();

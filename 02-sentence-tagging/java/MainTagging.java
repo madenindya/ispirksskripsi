@@ -1,9 +1,9 @@
 import java.util.*;
 import java.io.*;
 
+// java MainTagging ../../00-data/korpus-kata/iterasi-1.korpus ../../00-data/wiki/wiki-ind-s ../../00-data/wiki/wiki-ind-tagged-iterasi-2
 public class MainTagging {
     
-    // java MainTagging <seed_file_name> <input_folder_name> <output_folder_name>
     public static void main(String[] args) throws IOException {
     
         SeedLoader sl = new SeedLoader();

@@ -29,7 +29,7 @@ public class MainIterasi1 {
         try {
             opath = args[0];
         } catch(Exception e) {
-            System.out.println("output file:");
+            System.out.println("output folder: (tmpattern/)");
             opath = bf.readLine();    
         }
 
@@ -38,9 +38,7 @@ public class MainIterasi1 {
         sb = new SeqBuilder();
         unik = new HashMap<>();
         tmpunik = new HashSet<>();     
-
         String path = "../../00-data/wiki/wiki-ind-tagged-sameLemma/hh";
-
         // in-between builder
         System.out.println("Find in-between pattern");
         List<MyPattern> hasil = findPattern(path, 0, 0, min);
@@ -68,9 +66,7 @@ public class MainIterasi1 {
         sb = new SeqBuilder();
         unik = new HashMap<>();
         tmpunik = new HashSet<>();     
-
         path = "../../00-data/wiki/wiki-ind-tagged-strict/hh";
-
         // in-between builder
         System.out.println("Find in-between pattern");
         hasil = findPattern(path, 0, 0, min);
@@ -88,7 +84,7 @@ public class MainIterasi1 {
         // END - strict
 
 
-        // COMBINE sameLemma - strict
+        // COMBINE sameLemma & strict
         System.out.println("SameLemma -> " + hasil1.size());
         System.out.println("Strict -> " + unik.size());
         List<MyPattern> ppatterns = new ArrayList<>();
@@ -112,7 +108,7 @@ public class MainIterasi1 {
             }
         });
         // write to file
-        BufferedWriter bw = new BufferedWriter(new FileWriter(opath+".pattern"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(opath+"iterasi-1.pattern"));
         int ccount = 0;
         for (MyPattern mp : ppatterns) {
             bw.write(mp.getStr() + "\n");
@@ -133,7 +129,7 @@ public class MainIterasi1 {
             bw.write(fp+"\n");
         }
         bw.close();
-        bw = new BufferedWriter(new FileWriter(opath+"-selected.pattern"));
+        bw = new BufferedWriter(new FileWriter(opath+"iterasi-1-selected.pattern"));
         for (String fp : filteredPattern) {
             bw.write(fp+"\n");
         }

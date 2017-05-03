@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.*;
 
+// java MainFilterPair ../tmpresult/iterasi-1-filter-2wordEmbedd.seed ../tmpresult/iterasi-1-filter-3score.seed 1
 public class MainFilterPair {
     
     private static int max_pattern = 5;
@@ -51,7 +52,7 @@ public class MainFilterPair {
     }
 
     private static void printSeeds(List<Seed> seeds, String opath) throws IOException {
-        Set<String> fseeds = new TreeSet<>();
+        Set<String> fseeds = new HashSet<>();
     
         BufferedWriter bw = new BufferedWriter(new FileWriter(opath));
         BufferedWriter bww = new BufferedWriter(new FileWriter("../tmpresult/iterasi-"+iterasike+"-selected.seed"));
@@ -59,7 +60,7 @@ public class MainFilterPair {
             if (s != null) {
                 bw.write(s.getStr()+"\n");
             }
-            if (s.score > 0.6) {
+            if (s.acceptSeed()) {
                 bww.write(s.getStr()+"\n");
                 fseeds.add(s.getKey());
             }
@@ -76,9 +77,21 @@ public class MainFilterPair {
             line = bff.readLine();
         }
         bff.close();
-        bw = new BufferedWriter(new FileWriter("../../00-data/korpus-kata/iterasi-" + iterasike + ".korpus"));
+
+        List<Pair> ppairs = new ArrayList<>();
         for (String s : fseeds) {
-            bw.write(s+"\n");
+            ppairs.add(new Pair(s));
+        }
+        Collections.sort(ppairs, new Comparator<Pair>() {
+            @Override
+            public int compare(Pair s1, Pair s2) {
+                int a = s1.hypernym.compareTo(s2.hypernym);
+                return a;
+            }
+        });
+        bw = new BufferedWriter(new FileWriter("../../00-data/korpus-kata/iterasi-" + iterasike + ".korpus"));
+        for (Pair p : ppairs) {
+            bw.write(p.pair+"\n");
         }
         bw.close();
 
@@ -90,7 +103,10 @@ public class MainFilterPair {
         BufferedReader bff = new BufferedReader(new FileReader(ipath));
         String line = bff.readLine();
         while (line != null) {
-            resultSeed.add(formatString(line, max));
+            Seed baru = formatString(line, max);
+            if (baru != null) {
+                resultSeed.add(formatString(line, max));
+            }
             line = bff.readLine();
         }
         bff.close();
@@ -106,6 +122,7 @@ public class MainFilterPair {
             String[] words = pair.split(";");
             String hypo = words[0].substring(0, words[0].lastIndexOf("_"));
             String hype = words[1].substring(0, words[1].lastIndexOf("_"));
+            if (hypo.equals(hype)) return null;
             
             String[] vect = tmp1[1].split(" ");
             int count = Integer.parseInt(vect[1]);
@@ -162,5 +179,21 @@ class Seed {
         return "("+this.pname+")";
     }
 
+    public boolean acceptSeed() {
+        boolean f1 = (this.score > 0.6);
+        return f1;
+    }
 
+
+}
+
+class Pair {
+    String pair;
+    String hypernym;
+
+    public Pair (String p) {
+        this.pair = p;
+        String chype = p.split(";")[1];
+        hypernym = chype.substring(0,chype.length()-1);
+    }
 }

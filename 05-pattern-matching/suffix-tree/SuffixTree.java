@@ -35,7 +35,7 @@ public class SuffixTree {
             // if (bannedSeed(he, ho)) return;
             // new seeds
             Seed nseed = new Seed();
-            nseed.addName(he, ho);
+            if (!nseed.addName(he, ho)) return;
             nseed.addTag(heTag, hoTag);
             nseed.count = 1;
 

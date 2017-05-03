@@ -8,10 +8,24 @@ public class MyPattern {
     public Set<String> seeds;
     public Set<String> sentences;
 
+    public int countSeed;
+    public int countSentence;
+
     public MyPattern() {
         this.seeds = new HashSet<>();
         this.sentences = new HashSet<>();
         this.count = 0;
+    }
+
+    public MyPattern(String s) {
+        s = s.trim();
+        
+        this.pattern = s.split(" ; ")[0];
+        
+        String[] vec = s.split(" ; ")[1].split(" ");
+        this.count = Integer.parseInt(vec[0]);
+        this.countSeed = Integer.parseInt(vec[1]);
+        this.countSentence = Integer.parseInt(vec[2]);
     }
 
     public String getStr() {
@@ -25,13 +39,36 @@ public class MyPattern {
         String s2 = String.format("%.2f", w2);
         String s3 = String.format("%.2f", w3);
 
-        return pattern + " ; " + count + " " + seeds.size() + " " + sentences.size() + " " + s1 + " " + s2 + " " + s3;
+        int size;
+        try {
+            size = seeds.size();
+        } catch (Exception e) {
+            size = countSeed;
+        }
+        int sentence;
+        try {
+            sentence = sentences.size();
+        } catch (Exception e) {
+            sentence = countSentence;
+        }
+
+        return pattern + " ; " + count + " " + size + " " + sentence + " " + s1 + " " + s2 + " " + s3;
     }
 
     public int cmprTo(MyPattern p2) {
         // berdasarkan sentence unik
-        int c1 = this.sentences.size();
-        int c2 = p2.sentences.size();
+        int c1;
+        try {
+            c1 = this.sentences.size();
+        } catch (Exception e) {
+            c1 = this.countSentence;
+        }
+        int c2;
+        try {
+            c2 = p2.sentences.size();
+        } catch (Exception e) {
+            c2 = p2.countSentence;
+        }
         if (c1 != c2) {
             return c2 - c1;
         }
@@ -49,15 +86,39 @@ public class MyPattern {
     }
 
     public double getWeight() {
-        return (1.0*this.seeds.size()) / (1.0*this.sentences.size());
+        int s1;
+        try {
+            s1 = this.seeds.size();
+        } catch (Exception e) {
+            s1 = this.countSeed;
+        }
+        int s2;
+        try {
+            s2 = this.sentences.size();
+        } catch (Exception e) {
+            s2 = this.countSentence;
+        }
+        return (1.0*s1) / (1.0*s2);
     }
 
     public double getWeight2() {
-        return (1.0*this.seeds.size()) / (1.0*this.count);
+        int s1;
+        try {
+            s1 = this.seeds.size();
+        } catch (Exception e) {
+            s1 = this.countSeed;
+        }
+        return (1.0*s1) / (1.0*this.count);
     }
 
     public double getWeight3() {
-        return (1.0*this.sentences.size()) / (1.0*this.count);
+        int s1;
+        try {
+            s1 = this.sentences.size();
+        } catch (Exception e) {
+            s1 = this.countSentence;
+        }
+        return (1.0*s1) / (1.0*this.count);
     }
 
     public String getUnik() {

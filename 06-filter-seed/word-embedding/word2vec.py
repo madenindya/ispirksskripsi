@@ -11,7 +11,7 @@ class MySentences(object):
     def __iter__(self):
         for fname in os.listdir(self.dirname):
             for line in open(os.path.join(self.dirname, fname)):
-                yield line.lower().split()
+                yield line.lower().split() # lowercase-in
  
 sentences = MySentences('new') # a memory-friendly iterato
 model = gensim.models.Word2Vec(sentences, min_count=1, size=128, window=8)

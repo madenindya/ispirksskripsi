@@ -1,0 +1,511 @@
+(alom;surat kabar mingguan turki-yahudi) # 0.8384101242473572
+(islam;agama) # 0.8240348724929285
+(rusia;negara) # 0.816927994409
+(bahasa inggris;bahasa) # 0.8128201986379285
+(batuan sedimen;batuan) # 0.7976801793348571
+(linux;sistem operasi) # 0.7949448243223571
+(helikopter;pesawat udara) # 0.7874734928023572
+(pupuk organik;pupuk) # 0.7796721152318571
+(dinosaurus;hewan) # 0.7767876181458572
+(selulosa;senyawa organik) # 0.7726073795518571
+(metana;gas rumah kaca) # 0.7661100458188572
+(amerika serikat;negara) # 0.7652879105870001
+(sapi;hewan ternak) # 0.7614574168288571
+(informasi;data) # 0.7589155379313571
+(protein;makromolekul) # 0.7539906652393571
+(pariwisata;industri) # 0.7505770915458572
+(endapan;zat) # 0.7462649375083572
+(sepak bola;olahraga) # 0.7456104930599285
+(besi;logam) # 0.7427093947847857
+(hiena coklat;spesies hiena) # 0.7403132129228571
+(astaxanthin;karotenoid) # 0.7382645723573571
+(kristen;agama) # 0.7381245613243572
+(jerman;negara) # 0.7324249667005001
+(manasye;raja yehuda) # 0.7289697925533571
+(bahasa indonesia;bahasa) # 0.7283038650438571
+(pesawat militer;pesawat) # 0.7207963035318572
+(hutan jati;hutan) # 0.7197883787848571
+(polisakarida;karbohidrat) # 0.7175975387937856
+(sidodadi;pekon) # 0.7143989663533572
+(histon;protein) # 0.7120758622318571
+(sel vero;jalur sel) # 0.7104495940483572
+(hutan produksi;kawasan hutan) # 0.7062868317463571
+(bintang laut;hewan invertebrata) # 0.7032603546383571
+(bioteknologi;ilmu terapan) # 0.7019177257247857
+(radio;media) # 0.6986460449018572
+(majelis nasional;parlemen) # 0.6980651819787858
+(alkana sendiri;senyawa organik hidrokarbon) # 0.6967152673582143
+(kereta api priangan ekspres;rangkaian kereta api kombinasi kelas bisnis-eksekutif) # 0.6966483338722143
+(humas;fungsi manajemen) # 0.6957097421248571
+(karakter prince-k;karakter termahal) # 0.6947035574982142
+(kucing;hewan peliharaan) # 0.6942452105958572
+(sektor pertanian;sektor) # 0.6938517746313572
+(blitzicon;fasilitas photobooth) # 0.6917027714537143
+(suku bugis;suku) # 0.6904001706453571
+(vitamin;antioksidan) # 0.6903140271227857
+(kheiron;kentaur) # 0.6891758346083572
+(rvsv-ebov;vaksin rekombinan) # 0.6887169450662143
+(pohon sarang;jenis-jenis pohon hutan) # 0.6872328838917142
+(1rasionalitas;konsep normatif) # 0.6872059285257143
+(air;pelarut) # 0.6871997295748571
+(indonesia;negara) # 0.685576556283
+(google alerts;layanan pemberitahuan surel) # 0.6852306610497143
+(neuropeptide;agen vasokonstriktor) # 0.6840062114147143
+(bagian timur;daerah) # 0.6832191583058571
+(kekristenan;agama) # 0.6831864729407857
+(kutin;polimer heterogen) # 0.6831053993343572
+(buddha;agama) # 0.6830551472547857
+(pecel;makanan) # 0.6829669567108572
+(stasiun jetis;stasiun kereta api non-aktif) # 0.6826158412883572
+(partai komunis indonesia;partai komunis) # 0.6814868653792857
+(kalender iran;kelanjutan kalender-kalender) # 0.6804895517797143
+(assa driver services;penyedia tenaga pengemudi) # 0.6799408098862143
+(shaka;kepala suku zulu) # 0.6798930386983572
+(ambarrukmo palace;keraton ambarrukmo) # 0.6796953791382143
+(buku kama sutra;hasil karya literatur sanskerta) # 0.6778959269357143
+(vinyl record;rekaman orisinil) # 0.6768431371807143
+(pala;rempah-rempah) # 0.6761684254667857
+(bakongo;suku bangsa penduduk hilir sungai congo) # 0.6747011923402143
+(fundus vesika felea;bagian kantong empedu) # 0.6735694863787143
+(internet;jaringan komputer) # 0.6724692902397857
+(koto andiko;pucuk/kotuo) # 0.6723906661362142
+(rawan hiu;suplemen pemakanan) # 0.6715002441532143
+(kembang goyang sendiri;nama sejenis perhiasaan) # 0.6709857315502142
+(bakteri;kelompok organisme) # 0.6708132567513572
+(konon anasuya;sosok pertapa wanita) # 0.6702991923367143
+(injil markus;injil) # 0.6699703499062857
+(benar-benar muslim;program seri komedi religi) # 0.6693284340072143
+(islam;agama mayoritas) # 0.6690485313508572
+(relasi;hubungan) # 0.6687576621737856
+(helikopter mi-17;medium weight) # 0.6678295587117142
+(kelurahan kagok;kelurah) # 0.6678124241777142
+(esemka zhangaro;model pikap niaga) # 0.6669663420032143
+(khusnul yuli kurniawan;legenda hidup persik kediri) # 0.6666157217662143
+(misalnya antibiotik rifampicin;aktivator pencerap px) # 0.6654814782557142
+(bagian utara;daerah perbukitan) # 0.6653100944782857
+(kematian eleazar;subjek seni) # 0.6649274583827143
+(tigmonasti;gerak tumbuhan) # 0.6643159376527142
+(bengkokan tulang rusuk;perpanjangan tulang) # 0.6637193830897142
+(jaringan mal;sistem difusi jaringan limfoid) # 0.6636686811622142
+(daya fusi;teknologi ekperimental) # 0.6618756808687143
+(etanol;cairan) # 0.6617560818167857
+(dinasti qing;dinasti) # 0.6610275496407857
+(elina lubis;aktris blasteran jerman-batak) # 0.6608958504922142
+(unit kegiatan mahasiswa;organisasi kemahasiswaan) # 0.6605712082372143
+(unit kegiatan mahasiswa;organisasi kemahasiswaan) # 0.6605712082372143
+(pasukan guecha;pasukan konfederasi muiska) # 0.6602471571872143
+(banjaran crocker;banjaran gunung) # 0.6584423023702143
+(galaksi bimasakti sendiri;anggota kelompok galaksi) # 0.6580851879957142
+(khedivate mesir;negara pembayar upeti otonomi kekaisaran ottoman) # 0.6571748876182143
+(grijaya culture village;desa adat girijaya) # 0.6565345315877142
+(fakultas farmasi;fakultas) # 0.6565241834272857
+(sultan muhammad seman;sultan banjar) # 0.6556679407932857
+(protein;molekul) # 0.6556581123677143
+(tamsiran;anggota dewan pl) # 0.6550591890477143
+(arsitektur fujian;perpaduan budaya tionghoa) # 0.6547323011247143
+(landak;hewan pengerat) # 0.6547278972667857
+(unit pengembangan ke-islaman stain jurai siwo metro;unit dakwah kampus) # 0.6547175860792143
+(dewan perwakilan rakyat daerah kabupaten/kota;lembaga perwakilan rakyat daerah) # 0.6543500652358571
+(desa patampanua dahulu;kerajaan kecil) # 0.6541159733887143
+(batalyon infanteri 403/wirasada pratista;batalyon infanteri teritorial) # 0.6533022180757143
+(manzhumah al-baiquniyah;naskah kecil/saku pengantar ilmu hadis) # 0.6527583680742143
+(wilayah sepanjang bagian barat;lereng lajur perbukitan prigi) # 0.6527061139002143
+(pasukan pemukul reaksi cepat kostrad;komando tugas gabungan tni) # 0.6526588247992142
+(tsunamigenic earthquake;gempa penyebab tsunami) # 0.6519846160087143
+(norodom sihanouk;raja kamboja) # 0.6519583570522858
+(kawasan jembatan merah;daerah perniagaan) # 0.6516659518472143
+(dahulu sarung muna;sarung adat) # 0.6515018270222143
+(komplek candi tondowongso;situs temuan purbakala) # 0.6514755065092143
+(mulanya laweyan;perkampungan masyarakat) # 0.6507511581252142
+(gandum;serealia) # 0.6506739338927143
+(kanker;penyakit) # 0.6499536158382143
+(ayam;daging) # 0.6495787942637142
+(levi 's telepon genggam;seri telepon genggam) # 0.6494478601847142
+(sepanjang jalan poltangan;daerah jajanan) # 0.6492827309557143
+(stasiun wanaraja;stasiun kereta non-aktif) # 0.6489237440977143
+(katolik roma;agama) # 0.6488913983817857
+(vitamin;senyawa organik) # 0.6487880391732856
+(google business solutions;kumpulan layanan) # 0.6482972307372142
+(desa wisata kembang arum;lokasi wisata alam pedesaan) # 0.6474275203617142
+(kecamatan selayar;kecamatan hasil pemekaran kecamatan lingga) # 0.6471258550747143
+(inggris;negara) # 0.6470494433709285
+(fkmit;organisasi masyarakat muslim) # 0.6468338975452143
+(kinase fosfatidil inositol-3;enzim kinase lipid) # 0.6467455418492143
+(galaktosa;monosakarida) # 0.6465996719862143
+(ulkus;lesi) # 0.6465558148907142
+(astenosfer;lapisan) # 0.6458075981032857
+(kaisar tang xianzong;kaisar ke-11) # 0.6456848070062142
+(perpustakaan kuil kaiyuan;tempat penyimpanan sutra) # 0.6456108454652143
+(kiteretsu daihyakka;manga sains fiksi) # 0.6450865606872143
+(bahasa jerman;bahasa) # 0.6445589447372857
+(beasiswa pendidikan indonesia;program layanan lpdp) # 0.6439656719612142
+(freemasonry;organisasi) # 0.6437274526633572
+(pericardial rub;tanda perikarditis akut) # 0.6436731484112143
+(senjata api;senjata) # 0.6434671296187143
+(pusat komputer -lrb- puskom;pengelola teknologi informasi) # 0.6434543711327143
+(marginal gingiva;bagian tepi gingiva) # 0.6433031497867143
+(ornamen;dekorasi) # 0.6426023706992142
+(kiosrame.com;rintisan marketplace) # 0.6425883132867143
+(sig;sistem informasi) # 0.6422723185512857
+(nama darryl wezy sendiri;nama pseudonym) # 0.6417535352912143
+(glukosa;monosakarida) # 0.6416254109577143
+(wisata pantai blimbingsari;kawasan wisata kuliner) # 0.6405138456222143
+(dehidroepiandrosteron;steroid endogenus) # 0.6403095709787143
+(sup ercis;sup) # 0.6399451285403572
+(bir;minuman) # 0.6399192577192143
+(katalis;senyawa kimia) # 0.6395740768692143
+(kromosom 19;kromosom terpadat) # 0.6395156841012143
+(program pendidikan sekolah;bidang kerasulan) # 0.6391207140092142
+(mig-23k;varian kapal-induk) # 0.6390568760687143
+(tapioka;tepung) # 0.6389346863902142
+(wherry;perahu pantai) # 0.6388533889292143
+(atmel at89 series;keluarga mikrokontroler atmel) # 0.6384478647232142
+(bangsa;manusia) # 0.6381640416778571
+(protein;polimer) # 0.6381155929187142
+(komputer;perangkat) # 0.6381133845612142
+(bagian utara pulau halmahera;lokasi aktivitas vulkanik) # 0.6381029943657143
+(aov;rentang sudut) # 0.6377969489212143
+(basin kongo;basin sedimen) # 0.6377345138792143
+(media aesculapius fk ui;badan jurnalistik) # 0.6373697800197142
+(masitah;anggota nahdhatul ulama) # 0.6373463495377143
+(terkadang orgasme;gelombang sensasi) # 0.6371300408007142
+(kerajaan mokapog;negeri induk) # 0.6364550458562143
+(padi;tanaman) # 0.6358575763522857
+(catalyst video;studio animator) # 0.6355738622447142
+(thian-te sam-lo-mo;kakek sesat sakti) # 0.6354939404197143
+(israel;negara) # 0.6352315640383572
+(rayap;serangga) # 0.6350250695882858
+(gereja katolik;gereja) # 0.6347672902592143
+(roh kudus;roh allah) # 0.6347569184172857
+(sel schwann;sel glia) # 0.6344086726692857
+(kebencian;emosi) # 0.6342568612477857
+(kepadatan penduduk;jumlah penduduk) # 0.6342550757562143
+(perdana menteri;kepala pemerintahan) # 0.6339816263372142
+(sora the wingless duck;komik ciptaan takeshi hinata) # 0.6333658511287142
+(hukum adat;aturan) # 0.6333045663462857
+(pertanian;sektor) # 0.6332330208087857
+(koordinator eksekutif mahasiswa;organisasi kemahasiswaan eksekutif tingkat kampus) # 0.6331897330882142
+(raden tumenggung soera adiningrat;bupati pandegelang) # 0.6329524400292142
+(dadak merak;topeng) # 0.6327708346223572
+(ghetto warsawa;ghetto) # 0.6325205967627857
+(-rrb- palapa cup;kegiatan kompetisi softball/baseball pelajar sma) # 0.6324590399322143
+(antarktika;benua) # 0.6324055767017858
+(blackberry;ponsel pintar) # 0.6313310010717142
+(aurigae;bintang raksasa jingga tipe) # 0.6312693978352143
+(peptida;molekul) # 0.6312166021607143
+(pelarut;cairan) # 0.6309686253202142
+(dewan perwakilan rakyat daerah provinsi;lembaga perwakilan rakyat daerah) # 0.6307789488838571
+(sapu lidi;sapu) # 0.6305914170247857
+(laut;kumpulan air) # 0.6305691900138571
+(televisi;media) # 0.6304082953952856
+(statistika;ilmu) # 0.6297384773348571
+(mineralogi;ilmu bumi) # 0.6295848975787143
+(daging;bahan makanan) # 0.6292382992707143
+(normalitas;sistem konsentrasi) # 0.6289619689157857
+(tanjung;daratan) # 0.6288959272718572
+(susastra ayurveda;ajaran bentuk pengobatan alternatif) # 0.6288178592772142
+(komisi yudisial;lembaga negara) # 0.6287152077402858
+(karakter lord ruthven;tipikal genre gothik) # 0.6285622052341429
+(taurus;zodiak) # 0.6285044066508572
+(mars;planet) # 0.6284145157287857
+(pangeran kusuma diningrat;leluhur sukapura) # 0.6283358195922143
+(jernang;resin) # 0.6280300366742857
+(mutasi slc5a1;penyebab malaserap glukosa-galaktosa kongenital) # 0.6279743395241428
+(american specialty cars;pemasok mobil sistem atap) # 0.6275081548051429
+(ikan;hewan) # 0.6270865318232143
+(vglut3;glikoprotein sepanjang 589) # 0.6269424867256428
+(intel 440;keluarga chipset-chipset motherboard) # 0.6268572259377143
+(e-book;media digital) # 0.6266954752117143
+(lebah;serangga) # 0.6263426310497857
+(telepon;alat komunikasi) # 0.6261555304218571
+(file doinst.sh;shell script) # 0.6259994321432143
+(nefridium;organ invertebrata) # 0.6253913908017142
+(krov;penyihir asal fairy tail) # 0.6247492797651428
+(ethelreda;putri cospatric) # 0.6246304775517143
+(pertanian;industri) # 0.6246159394517142
+(karaweira;kelompok gugus pulau) # 0.6244625786886429
+(cancri;bintang raksasa jingga tipe) # 0.6242486185012143
+(falsafahnya teknologi pertanian;praktik-empirik) # 0.6241657802237143
+(komando daerah militer x/lambung mangkurat;komando kewilayahan pertahanan) # 0.6240439734612143
+(jepang;negara) # 0.6240405981404286
+(angela nathalie gossow;vokalis death metal) # 0.6240222721457143
+(proses pelarutan amonium nitrat;proses endoterm) # 0.6238599523846429
+(allah;tuhan) # 0.6237061759851428
+(tuhan;allah) # 0.6237061759851428
+(keju;makanan) # 0.6234952925302857
+(rna;polimer) # 0.6234608945702143
+(deskriptivesme;bentuk konvesionalisme) # 0.6234548297377143
+(garis suksesi takhta yordania;garis orang-orang) # 0.6234030157341428
+(planet hitam;lanjutan film cicak-man) # 0.6228624106726428
+(daging;makanan) # 0.6227165839282143
+(muniyati;ketua yayasan bina autis mandiri) # 0.6226871459406429
+(operasi penttbom;upaya investigasi) # 0.6225457214201429
+(sidaguri;herba) # 0.6225037935717856
+(sandrinna michelle skornicki;artis cilik blasteran) # 0.6224969776076428
+(anjing;hewan) # 0.6224653119847142
+(iran;negara) # 0.6224199041192857
+(fenomena pns;kelanjutan nilai-nilai) # 0.6224172909057143
+(richard peet;geografer marxis) # 0.6222269836881429
+(kelurahan mendut;kelurahan pembentuk mungkid) # 0.6221900820446429
+(monosakarida;karbohidrat) # 0.6216804673587143
+(tau-1 hydrae;bintang kelas f6) # 0.6215567501832143
+(aren;tumbuhan) # 0.6215110604458571
+(orang rao;kelompok masyarakat minangkabau) # 0.6214371874632143
+(austal usa;perusahaan manufaktur kapal) # 0.6213501299456429
+(gedung laboratorium pengujian doping;fasilitas uji doping) # 0.6210658544921428
+(chorizopes shimenensis;spesies chorizopes shimenensis) # 0.6207858277396429
+(topologi;cabang matematika) # 0.6206229997662143
+(angptl-3;senyawa penghambat lpl) # 0.6205537929497142
+(makanan ratu;sari madu) # 0.6204488687536429
+(pluto;planet katai) # 0.6203644418882143
+(jacob van artevelde;pemimpin flemish) # 0.6201630376121429
+(phantom tubuh lengkap;alat peraga kesehatan) # 0.6201330283362143
+(beausoleil;pemimpin masyarakat acadia) # 0.6201247189211428
+(ekskur english club;cabang bahasa) # 0.6200564769137142
+(brian cowen;kepala pemerintahan irlandia) # 0.6196687410156428
+(iso 9241;standar multibagian) # 0.6196360329941428
+(pancing tonda;pancing) # 0.6194123160132142
+(kemungkinan enrique;penduduk cebu) # 0.6189262402372143
+(monarki;pemerintahan) # 0.6188865635902143
+(janda herang;penguasa kampung) # 0.6185584481331429
+(kiai toemenggoeng djaija negara;regent van amonthaij) # 0.6183549150376428
+(hyatt gold passport;akumulasi poin hotel hyatt) # 0.6182579531261428
+(fisiografis ktm lamunti;daerah grup dataran) # 0.6181145109436428
+(semula bp kodam xiv/hasanudin;embrio denkavser) # 0.6181105137771428
+(arp 276;pasangan galaksi) # 0.6177845766217143
+(kalsium;mineral) # 0.6176259426112143
+(editor utama bmj;fiona godlee) # 0.6175697563146428
+(libreoffice draw;komponen aplikasi libreoffice) # 0.6174714371412142
+(360amigo system speedup;perkakas windows) # 0.6173182241796429
+(emas;logam) # 0.6173068091232856
+(negara kota haguenau;anggota décapole) # 0.6172509404761428
+(pi arietis;sebuh sistem bintang) # 0.6170352646591428
+(zaman pemerintahan dinasti song;periode organisasi) # 0.6169962394321429
+(selat malaka;jalur perdagangan) # 0.6169442339287142
+(kemunduran latief;awal kejatuhan pemerintahan) # 0.6168241838511428
+(tsp-3;protein pengikat heparin) # 0.6167174240126428
+(rri pekanbaru;stasiun radio penyiaran milik pemerintah) # 0.6166130381717143
+(konferensi internasional hak asasi manusia;konferensi hak asasi manusia) # 0.6165442537527143
+(siklus sulfur-iodin;sederet proses termokimia) # 0.6164712020517142
+(hibari kyoya;ketua komite kedisiplinan smp namimori) # 0.6164679753836428
+(udang galah;udang) # 0.6163424877262142
+(alur;jalan cerita) # 0.6163160567597142
+(dhoho plaza;family mall) # 0.6163032443987143
+(uskup jefferts schori;uskup ke-963) # 0.6161985251621429
+(oesophagus;lanjutan pharynx) # 0.6160590120461429
+(air togo;nama maskapai penerbangan togo) # 0.6160529552166428
+(alix;putri otto) # 0.6159335712627143
+(biola;alat musik) # 0.6157888009597142
+(obyek wisata coban pelangi;zona konservasi alam) # 0.6157580571711428
+(sarden;ikan laut) # 0.6156692216842142
+(chi persei;bintang kelas g7iii) # 0.6156086025971428
+(perhimpunan mahasiswa katolik republik indonesia disingkat;organisasi kepemudaan katolik) # 0.6152087068522143
+(nenek moyang mama lauren;kaum gypsy) # 0.6151463701256428
+(kernel;program komputer) # 0.6146291112327142
+(garam;senyawa) # 0.6145778580762857
+(analisis eksitensial-fenomenologis;titik tolak dasariah) # 0.6145578984131428
+(omega persei;bintang kelas k1iii) # 0.6144958876516429
+(kri tombak;kapal perang jenis kapal cepat rudal) # 0.6143270551711428
+(baudouin;raja belgia) # 0.6142013064792142
+(mangalap boru;adat pemjemputan pengantin wanita) # 0.6141280949026429
+(ufo sehinga;detektor ufo) # 0.6139918654096428
+(wilayah ulayat kampung dukuh;sumber kekayaan masyarakat adat dukuh) # 0.6137368836676429
+(hidup sehat cara hembing;program klinika interaktif) # 0.6136084385251428
+(dahulu nronggo;kawasan sepi) # 0.6132731499661428
+(odcn;kolom campuran) # 0.6131543141016429
+(kuma-kuma penghasil safron;hasil seleksi buatan) # 0.6130870374626429
+(trem;kereta) # 0.6130374941537142
+(kolagen;protein) # 0.6129499925102143
+(mulga apel;nyali serangga) # 0.6128684515347143
+(syekh muhammad saad mungka;ulama pendukung tradisi tarikat) # 0.6128168610486429
+(ankilosing spodilitis;penyakit jaringan ikat) # 0.6127720485482143
+(asam butirat;asam lemak) # 0.6127261874632143
+(google play buku;aplikasi buku elektronik lintas platform) # 0.6127239843536428
+(lembaga penanggulangan bencana muhammadiyah;lembaga muhammadiyah) # 0.6126808468407142
+(pegawai negeri sipil nasional;kegiatan pemutakhiran data pns) # 0.6126560307516429
+(mtc karebosi;pusat grosir) # 0.6126421552967857
+(mata pelanduk;tumbuhan renek) # 0.6124758036211428
+(panji inu kertapati asmarabangun;pangeran janggala) # 0.6124171738131429
+(alih kodal pprc tni;bagian tradisi komando) # 0.6124045625157143
+(vegetasi utama moldova;stepa hutan) # 0.6123644114686428
+(hits collection d'academy;album kompilasi karya d'academy) # 0.6123606164722143
+(soapy slick;karakter kartun serial komik gober bebek) # 0.6123407942806429
+(tradisi pesta sedekah laut;wujud syukur nelayan) # 0.6122651884156429
+(bahasa sunda;bahasa daerah) # 0.6119692102157143
+(agama islam;agama) # 0.6118357233852857
+(anjung;ruangan) # 0.6117258561313572
+(pelarut organik;pelarut) # 0.6116990309067143
+(lens culinaris;tumbuhan penghasil kacang) # 0.6116981938466428
+(sama-sama revolusioner;perbaikan pasukan) # 0.6116113836551429
+(edwin samuel montagu pc;politikus britania raya-yahudi) # 0.6115003843246429
+(bakteri;mikroorganisme) # 0.6114754383506429
+(otak;organ) # 0.6111462796947142
+(blok jatirah;tapal batas desa karangmnagu) # 0.6111053310871428
+(singapura;negara) # 0.6109978054198572
+(eadric;putra-putra thelthryth) # 0.6109603485476429
+(spanyol;negara) # 0.6109266781968572
+(atmega16;mikrokontroler cmos 8-bit buatan atmel keluarga avr) # 0.6109097977661428
+(beta aurigae;bintang) # 0.6108357315773572
+(yunnan university of tcm;mitra iik) # 0.6108336614466429
+(poliklinik up;sarana penunjang pelayanan kesehatan) # 0.6107968788047142
+(jagalah hati;album musik karya aa gym) # 0.6107884552566428
+(dallara dw12;model mobil balap indycar series) # 0.6106018804087143
+(plutonium;logam) # 0.6105707372327143
+(bernhard ii;adipati sachsen) # 0.6102260432247143
+(cristián zapata;pesepak bola asala kolombia) # 0.6102105443071428
+(skadron teknik 045 disingkat;satuan pelaksana pemeliharaan pesawat) # 0.6101372382286429
+(ratu elizabeth ii;kepala negara) # 0.6100906861107858
+(tari ganjur;tarian pria istana) # 0.6100384581722142
+(teori promozione;liga tempat tujuan klub-klub) # 0.6100261256926429
+(bahasa nenetsia;bahasa terpopuler) # 0.6099867722181429
+(satelit noaa;satelit meterologi generasi) # 0.6099863183706429
+(irlandia;negara) # 0.6097986007573571
+(akira kusano;teman sekelas shuji) # 0.6097515068831428
+(love eternal;album solo rohani nikita) # 0.6097376056472142
+(kerajaan bangkule sultankng;kerajaan orang-orang suku dayak) # 0.6096357671552143
+(bca mobile;aplikasi perbankan) # 0.6095205236226429
+(juara panah asmara arjuna;rizky amalia) # 0.6094493803016429
+(baintelkam polri;unsur pelaksana tugas pokok bidang intelijen keamanan) # 0.6093050662067143
+(manusia;makhluk hidup) # 0.6092866948782143
+(arbitrase obligasi daerah;strategi pengelola investasi) # 0.6092721886186429
+(batalyon kesehatan 2/yudha bhakti husada;satuan bantuan administrasi kesehatan) # 0.6092607139347143
+(elpanel;applet animasi administrasi) # 0.6089486752222143
+(fall out fall in;kartun produksi walt disney) # 0.6089339488501428
+(burung-burung cenderawasih;anggota famili paradisaeidae) # 0.6087831369426429
+(kim mikael källström;pesepak bola swedia) # 0.6087158735016429
+(gaien;wilayah bagian luar kuil) # 0.6086997204442143
+(pulau jawa;pulau) # 0.6085049975237857
+(springer nature;perusahaan penerbitan ilmiah) # 0.6084835146761429
+(modus infinitif;modus nomina) # 0.6083591181576429
+(wildan aswan tanjung;bupati labuhanbatu selatan) # 0.6083559043151429
+(radio;stasiun radio) # 0.6083446521132143
+(heavy weather;album weather report) # 0.6082028626856428
+(dhisa;penyanyi besutan yovie widianto) # 0.6081922163551429
+(mertua achmad hudan dardiri;abdul manan sutan bagindo) # 0.6081877152851429
+(sistotrema confluens;basidiomycota cendawan) # 0.6081777090026428
+(kecap asin;kecap) # 0.6080929310086429
+(yelena;pemegang rekor dunia loncat galah putri) # 0.6080355040726428
+(keluarga bayer;kelompok rasi bintang) # 0.6079884127397143
+(amilopektin;polisakarida) # 0.6077905851937143
+(zona sesar sumatera;zona sesar semangko) # 0.6077296489101429
+(asetilena;alkuna) # 0.6075900520442142
+(puteri duan;istri cina/xianbei pendiri negara) # 0.6075501179416429
+(desa bojong rangkas;desa penghubung tempat wisata) # 0.6074980054981429
+(mnctv jawa barat;jaringan perusahaan mnctv) # 0.6072867700387142
+(komandan pusdiklatpassus;kolonel inf kartika adi putranta) # 0.6072009317436429
+(tambran utara;bagian kelurahan tambran) # 0.6071418271587142
+(trombopoietin;hormon ligan c-mpl) # 0.6071216184552143
+(persamaan colebrook;persamaan implisit) # 0.6069914654771429
+(openoffice.org math;komponen aplikasi) # 0.6069693477182143
+(bukankah mar efraim;efraim patriark antiokhia) # 0.6069352170556428
+(sebelah timur arabah;domain suku) # 0.6069133754736429
+(thomas cartwright;pemimpin kaum puritan) # 0.6069059552626428
+(digimon virtual pet;permainan peliharaan virtual) # 0.6068642744341428
+(plasmid pglo;plasmid modifikasi) # 0.6068004377462143
+(penggabungan kecamatan;penyatuan kecamatan) # 0.6067862204276429
+(enzim;protein) # 0.6066145890466428
+(astaxanthin;antioksidan) # 0.6064464169712143
+(belut;ikan) # 0.6064442140397143
+(talek;mineral metamorf) # 0.6063778046737143
+(alethinophidia;infraordo ular) # 0.6062379465416429
+(negara kota obernai;anggota decapole) # 0.6062261472486428
+(nokia 3100;ponsel triband-gsm) # 0.6061973531627143
+(satuan dataran rendah;bentang lahan fluvial) # 0.6059936624152142
+(elieser sahat maruli hutagalung;kajati papua) # 0.6059861028311428
+(masalah lala;masalah psikologi anak-anak) # 0.6058581611341429
+(bw hindia belanda;induk hukum perdata) # 0.6058117611511429
+(palagan bojong kokosan;ikon kebanggaan masyarakat bojong kokosan) # 0.6057260016086429
+(asam galat;senyawa turunan asam sinamat) # 0.6056768740867142
+(pelopor penggunaan kerambit;steve tarani) # 0.6056231328366428
+(tepung beras;tepung) # 0.6056042672461428
+(sultan hashim jalilul alam aqamaddin;sultan brunei darussalam ke-26) # 0.6054322605976428
+(boeing 737-400;boeing 737-300) # 0.6054021090202143
+(brontoscorpio anglicus;spesies fosil kalajengking) # 0.6053314660921428
+(jeruk purut;tumbuhan perdu) # 0.6052948639977143
+(by mango;jajaran produk pria) # 0.6052856391741428
+(batuan metamorf;batuan) # 0.6052837676327143
+(bahasa belanda;bahasa) # 0.6052418716722143
+(bedhol bhawikarsu;kegiatan tahunan sman) # 0.6051825292326429
+(antibiotik;zat) # 0.6050824999487143
+(raja-raja nayak;buddha telugu) # 0.6050309424526428
+(gelar hutu;identitas trans-etnis) # 0.6050182985926429
+(ahmad bin yahya bin jabir al-baladzuri;sejarawan persian) # 0.6050035146146429
+(pandemik flu 1918;pandemik influenza kategori) # 0.6049769189466428
+(kemenakannya yazid rajo mangkuto;arsitek jam gadang) # 0.6049706095216428
+(awalnya khalid bin walid;panglima perang kaum kafir quraisy) # 0.6049574120456429
+(kecamatan kemuning;kecamatan terluar daerah daratan kabupaten indragiri hilir) # 0.6049309889992143
+(liga bola basket asean;kompetisi bola baseket) # 0.6048915958461428
+(pengukur jarak elektronik;alat ukur jarak elektronik) # 0.6048371065371428
+(elektrolit;senyawa) # 0.6047312931257143
+(pizo-elektrik;arah vertikal turmalin) # 0.6047146503426428
+(ekhidna;drakaina) # 0.6046474089612143
+(1-pirolina;senyawa imina siklik) # 0.6045893561796428
+(besaran molar ekses;properti campuran) # 0.6044828832296428
+(soulful ramadhan;album rohani karya tompi) # 0.6044724113306428
+(badan antariksa negara tiongkok;badan antariksa tiongkok) # 0.6044337455021429
+(parviz davoodi;wakil presiden iran) # 0.6043694221166429
+(pemanah muslim awal;pemanah infantri) # 0.6043261307696428
+(boeing 737 max-9;varian 737max) # 0.6043104960186428
+(supercars championship;kategori balap mobil touring) # 0.6042506288521429
+(heoteunchum;tarian impromptu) # 0.6042136318952143
+(indonesian varsities english debate;kompetisi debat parlementer tingkat universitas se-indonesia) # 0.6041108337191429
+(maxtor corporation;perusahaan pembuat cakram) # 0.6041008926871428
+(asal muasal mamanda;kesenian badamuluk) # 0.6039115104191428
+(swiss;negara) # 0.6038272248943571
+(pabrik porselen chelsea;industri awal porselen) # 0.6036571950401428
+(marga siswa;kepanjangtangan) # 0.6035344700831429
+(tioglikosida;inhibitors sglt1) # 0.6035039153751429
+(lembaga dalihannatolu;lembaga permusyawaratan/pemufakatan adat batak) # 0.6034549107981428
+(6.100 tehp;mesin turpboprop) # 0.6034231091466429
+(vanilla;rempah-rempah) # 0.6033544720202143
+(ibukotanya addis ababa;pusat administrasi kesatuan) # 0.6033518493456429
+(djuhana sattar;penyanyi lagu melayu) # 0.6032113827181429
+(karbon monoksida;senyawa) # 0.6031100163267142
+(liga sepak bola;kompetisi liga) # 0.6030920410457142
+(nomor induk siswa nasional;layanan sistem pengelolaan nomor induk siswa) # 0.6030150418836429
+(purwodadi;kampung) # 0.6029160933323572
+(andrews;arsitek laut) # 0.6028353690977143
+(hwa nan fa;klub milik warga keturunan) # 0.6028171968187143
+(hit singles and more;album musik ke-empat karya bunga) # 0.6027457604691429
+(yves henri donat mathieu saint laurent;perancang busana perancis) # 0.6027148993501428
+(voluntarisme metafisis;paham voluntarisme) # 0.6026964167676429
+(distrik erzgebirgskreis;gabungan bekas) # 0.6026375947156428
+(seng;logam) # 0.6025941425617143
+(hemiselulosa;pentosa) # 0.6025179739527142
+(sirip cumi-cumi;perluasan mantel) # 0.6024762013276428
+(id ring;peningkatan infrastruktur jaringan transportasi) # 0.6023802388491428
+(india;negara) # 0.6022360308593572
+(candi sorogedug;situs reruntuhan candi) # 0.6021878735311428
+(air diary;film semi-autobiografi) # 0.6021637708866429
+(anggota-anggotanya dulu;bekas pejuang-pejuang revolusi) # 0.6020986649382143
+(dusun kutoporong;letak pusat pemerintahan desa) # 0.6020540439016429
+(teh susu;minuman) # 0.6019753230983571
+(kanagarian silaping;lokasi silaping) # 0.6018773176991428
+(rakai panangkaran;anggota wangsa sailendra) # 0.6018557779542143
+(mahkamah agung;pengadilan) # 0.6017509971117143
+(dalam bahasa tionghoa zhīn;istilah pinjaman balik) # 0.6017261243631429
+(hydrophilidae;famili kumbang air) # 0.6017140698261428
+(nenad orđevi;pemain belakang serbia) # 0.6016320029381428
+(tingkat ketergantungan perdagangan;patokan kapitalisme tipe) # 0.6016300865031429
+(saturn;roket) # 0.6014634989072857
+(ngengat;serangga) # 0.6014135518712858
+(kecamatan lingga utara;kecamatan pemekaran lingga) # 0.6012803547931429
+(tenda flysheet;tenda pendukung) # 0.6012030503276429
+(opisthoteuthidae;familia gurita) # 0.6011690672536428
+(tapaloka;kediaman ras makhluk) # 0.6010422973376428
+(seruling;alat musik) # 0.6009335888957142
+(hla-dr2;contoh jenis antigen leukosit manusia) # 0.6007736262231429
+(amoksisilin;antibiotik) # 0.6007361123077143
+(chevrolet ss;mobil produksi chevrolet) # 0.6007006619697143
+(manang/baliatn;tari penyembuhan) # 0.6006779419301429
+(dipadosi dicari;afiks ngoko) # 0.6005945299271429
+(informasi;pesan) # 0.6005423204982143
+(daerah patay sendiri;daerah perbatasan briton) # 0.6005333785606428
+(formaldehida;disinfektan) # 0.6004825771157143
+(sistem informasi nasional;tulang punggung implementasi) # 0.6003795614256429
+(the genius bakabon;judul manga karya fujio akatsuka) # 0.6003470858701428
+(kinase piruvat dehidrogenase;enzim regulasi) # 0.6003266114136429
+(burung jenjang;burung pemangsa) # 0.6002815831572142
+(kategori stadion uefa;kategori-kategori stadion sepak bola) # 0.6000771462707143
+(klasifikasi goldschmidt;penggolongan unsur-unsur kimia) # 0.6000601560591429
+(pelekatan virus;proses interaksi awal) # 0.6000350401901429
