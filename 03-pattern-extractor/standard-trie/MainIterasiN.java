@@ -92,7 +92,6 @@ public class MainIterasiN {
             Matcher m1 = p1.matcher(npat.pattern);
             String unikey = m1.replaceAll("relation");
             if (unik.containsKey(unikey)) {
-                System.out.println("- " + npat.getStr());
                 dup++;
                 if (unik.get(unikey).cmprTo(npat) > 0) { // masukan yg ranking lebih tertinggi                
                     unik.put(unikey, npat);
@@ -110,7 +109,6 @@ public class MainIterasiN {
         // ranking all old & new pattern
         List<MyPattern> ppatterns = new ArrayList<>();
         for (String k : unik.keySet()) {
-            System.out.println(k);
             ppatterns.add(unik.get(k));
         }
         Collections.sort(ppatterns, new Comparator<MyPattern>() {

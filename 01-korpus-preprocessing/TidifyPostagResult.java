@@ -4,7 +4,7 @@ import java.io.*;
 public class TidifyPostagResult {
 
     public static void main(String[] args) throws IOException {
-        // java TidifyPostagResult /media/madenindya/42C0191EC01919AD/Skripsi-fix-data/wiki-ind-s-postag-messy ../00-data/wiki/wiki-ind-s-postag
+        // java TidifyPostagResult /media/madenindya/42C0191EC01919AD/Skripsi-fix-data/wiki-ind-s-postag-1-messy ../00-data/wiki/wiki-ind-s-postag
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Folder of folders input name: ");
@@ -82,12 +82,14 @@ public class TidifyPostagResult {
                 word = term;
             }
         } else if (word.equalsIgnoreCase("jenis") || word.equalsIgnoreCase("sejenis") || word.equalsIgnoreCase("jenis-jenis") 
-                || word.equalsIgnoreCase("seorang")) {
+                || word.equalsIgnoreCase("seorang") || word.equalsIgnoreCase("contoh")) {
             word += "_NND";
         } else if (word.equalsIgnoreCase("seseorang")) {
             word += "_PRP";
         } else if (word.equalsIgnoreCase("semacam")) {
             word += "_IN";
+        } else if (word.equalsIgnoreCase(":") || word.equalsIgnoreCase(",")) {
+            word += "_Z";
         }
         else {
             word = term;

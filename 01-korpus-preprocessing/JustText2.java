@@ -60,41 +60,7 @@ public class JustText2 {
     private static void printSentence(List<Pair> ls, BufferedWriter bw) throws IOException {
         String s = "";
         for (Pair p : ls) {
-            if (p.lemma.contains("_")) {
-                
-                String[] hearr = p.lemma.split("_");
-                int begin = 0;
-                int end = hearr.length;
-                if (end == 0) continue;
-                if (hearr[end-1].equals("-rrb-") || hearr[end-1].equals("asal") ||
-                    hearr[end-1].equals("saat")) {
-                    end--;
-                }
-                if (hearr[0].equals("jenis") || hearr[0].equals("sejenis") || hearr[0].equals("sekelompok") ||
-                    hearr[0].equals("sekumpulan") || hearr[0].equals("semacam") || hearr[0].equals("seperangkat")) {
-                    begin = 1;
-                }
-                String he = hearr[begin];
-                for (int i = begin + 1; i < end; i++) {
-                    he += "_" + hearr[i];
-                }
-
-                if (begin == 0 && end == hearr.length) {
-                    s += " " + p.lemma;
-                } else {
-                    if (begin != 0) {
-                        s += " " + hearr[0];
-                    } 
-                    if (begin != 0 || end != hearr.length) {
-                        s += " " + he;
-                    }
-                    if (end != hearr.length) {
-                        s += " " + hearr[hearr.length-1];
-                    }   
-                }
-            } else {
-                s += " " + p.lemma;   
-            }
+            s += " " + p.lemma;   
         }
         if (s.length() > 0) {
             bw.write(s.substring(1) + "\n");
@@ -142,7 +108,7 @@ public class JustText2 {
 
     private static boolean filteredPair(Pair p) {
         if (p.lemma.length() == 1) return true;
-        if (p.lemma.equals("\'\'")) return true;
+        if (p.lemma.contains("\'\'")) return true;
         // check apakah ada alphanumeric alphanumerical
         Pattern pt = Pattern.compile(".*[a-zA-Z0-9].*");
         boolean nonAlphanumerical = !(pt.matcher(p.lemma).find());

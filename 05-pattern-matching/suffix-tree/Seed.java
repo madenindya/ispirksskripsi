@@ -59,11 +59,7 @@ public class Seed {
         // hyponym
         if (ho.length() > 3 && ho.substring(ho.length()-3).equals("nya")) return false;
         if (!Pattern.matches(".*[a-z][a-z][a-z].*", ho)) return false;
-        if (ho.contains(" ")) {
-            String[] hoarr = ho.split(" ");
-            if (hoarr[0].equals("contoh")) return false; 
-        }
-
+        
         this.hypernym = he;
         this.hyponym = ho;
         return true;

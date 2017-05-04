@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
-// java MainSTreeIterasi1 tmpattern/nama_file
+// java MainIterasi1 tmpattern/
 // korpustag hypernym-hyponym no postag
 public class MainIterasi1 {
 
