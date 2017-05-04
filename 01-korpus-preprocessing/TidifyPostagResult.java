@@ -60,6 +60,8 @@ public class TidifyPostagResult {
         bw.close();
     }
 
+
+    // RULE BASED to FIX TAGs
     public static String fixTag(String term, int pos) {
         int last = term.lastIndexOf('_');
         if (last == -1 ) {
@@ -69,7 +71,8 @@ public class TidifyPostagResult {
         String word = term.substring(0, last);
         String tag = term.substring(last+1);
 
-        if (word.equalsIgnoreCase("<start>") || word.equalsIgnoreCase("<end>") || word.equalsIgnoreCase("</doc>")) {
+        if (word.equalsIgnoreCase("<start>") || word.equalsIgnoreCase("<end>") || word.equalsIgnoreCase("</doc>")
+            || word.equalsIgnoreCase("-rrb-")) {
             word += "_X";
         } else if (word.length() > 5 && word.substring(0,3).equalsIgnoreCase("ber")) {
             if ((word.charAt(0) == 'b' && tag.equalsIgnoreCase("NNP")) 
@@ -78,7 +81,14 @@ public class TidifyPostagResult {
             } else {
                 word = term;
             }
-        } 
+        } else if (word.equalsIgnoreCase("jenis") || word.equalsIgnoreCase("sejenis") || word.equalsIgnoreCase("jenis-jenis") 
+                || word.equalsIgnoreCase("seorang")) {
+            word += "_NND";
+        } else if (word.equalsIgnoreCase("seseorang")) {
+            word += "_PRP";
+        } else if (word.equalsIgnoreCase("semacam")) {
+            word += "_IN";
+        }
         else {
             word = term;
         }
