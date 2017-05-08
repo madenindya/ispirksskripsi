@@ -127,6 +127,36 @@ public class SuffixTree {
         }
         return sequence;
     }
+    // INPUT Kalimat POSTAG
+    // OUTPUT Kalimat yang udah berdasarkan POSTAG
+    public String getSequence(String sentence) {
+        List<Pair> ftokens = buildSequence(sentence);
+        if (ftokens.size() > 0) {
+            String result = ""; 
+            int i = 0;
+            for (Pair p : ftokens) {
+                String part = "";
+                String lemma = p.lemma;
+                if (lemma.equals("<start>") || lemma.equals("<end>") || lemma.equals("</doc>")) continue;
+                if (lemma.contains(" ")) {
+                    String[] lemmatokens = lemma.split(" ");
+                    part = lemmatokens[0];
+                    for (int j = 1; j < lemmatokens.length; j++) {
+                        part += "_" + lemmatokens[j];
+                    }
+                } else {
+                    part = lemma;
+                }
+                if (i == 0) {
+                    result = part;
+                } else {
+                    result += " " + part;
+                }
+                i++;
+            }
+            return result;
+        } else return "";
+    }
 
     /**
     * PRINT ALL SEQUENCE
