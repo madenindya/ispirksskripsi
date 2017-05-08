@@ -104,17 +104,18 @@ public class SuffixTree {
         for (int i = 0; i < tokens.length; i++) {
             // special char
             if (tokens[i].contains("<start>")) {
-                sequence.add(new Pair("<start>", ""));
+                sequence.add(new Pair("<start>", "XX"));
+                prevTag = "XX";
             } else if (tokens[i].contains("<end>")) {
-                sequence.add(new Pair("<end>", ""));
+                sequence.add(new Pair("<end>", "XX"));
+                prevTag = "XX";
             } else if (tokens[i].contains("</doc>")) {
-                sequence.add(new Pair("</doc>", ""));
-            } 
-            // others
-            else {
+                sequence.add(new Pair("</doc>", "XX"));
+                prevTag = "XX";
+            } else {
                 Pair cpair = splitTag(tokens[i]);
                 if (filteredPair(cpair)) {
-                    prevTag = cpair.postag; // tetap update prevTag-nya
+                    //prevTag = cpair.postag; // tetap update prevTag-nya
                 }
                 else if (cpair.postag.equals(prevTag)) {
                     Pair pvpair = sequence.get(sequence.size() - 1);
@@ -138,6 +139,9 @@ public class SuffixTree {
                 String part = "";
                 String lemma = p.lemma;
                 if (lemma.equals("<start>") || lemma.equals("<end>") || lemma.equals("</doc>")) continue;
+                if (lemma.contains("<start>")) {
+                    System.out.println(lemma);
+                }
                 if (lemma.contains(" ")) {
                     String[] lemmatokens = lemma.split(" ");
                     part = lemmatokens[0];

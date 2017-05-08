@@ -71,8 +71,10 @@ public class TidifyPostagResult {
         String word = term.substring(0, last);
         String tag = term.substring(last+1);
 
-        if (word.equalsIgnoreCase("<start>") || word.equalsIgnoreCase("<end>") || word.equalsIgnoreCase("</doc>")
-            || word.equalsIgnoreCase("-rrb-")) {
+        if (word.equalsIgnoreCase("-rrb-")) {
+            return "";
+        }
+        if (word.equalsIgnoreCase("<start>") || word.equalsIgnoreCase("<end>") || word.equalsIgnoreCase("</doc>")) {
             word += "_X";
         } else if (word.length() > 5 && word.substring(0,3).equalsIgnoreCase("ber")) {
             if ((word.charAt(0) == 'b' && tag.equalsIgnoreCase("NNP")) 
