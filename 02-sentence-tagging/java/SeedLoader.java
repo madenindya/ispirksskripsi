@@ -6,7 +6,8 @@ import java.io.FileReader;
 
 public class SeedLoader {
     
-    public Set<Seed> loadAllSeeds(String spath) throws IOException {
+    public Set<Seed> loadAllSeeds(String spath, int iterasike) throws IOException {
+        if (iter >= 3) { spath = "../../06-filter-seed/tmpresult/iterasi-"+(iterasike-1)+"-new.seed"; }
         BufferedReader bf = new BufferedReader(new FileReader(spath));
         Set<Seed> result = new HashSet<>();
 

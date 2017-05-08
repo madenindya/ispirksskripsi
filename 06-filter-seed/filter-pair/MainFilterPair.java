@@ -53,19 +53,18 @@ public class MainFilterPair {
 
     private static void printSeeds(List<Seed> seeds, String opath) throws IOException {
         Set<String> fseeds = new HashSet<>();
+        Set<String> justNew = new HashSet<>();
     
         BufferedWriter bw = new BufferedWriter(new FileWriter(opath));
-        BufferedWriter bww = new BufferedWriter(new FileWriter("../tmpresult/iterasi-"+iterasike+"-selected.seed"));
         for (Seed s : seeds) {
             if (s != null) {
                 bw.write(s.getStr()+"\n");
             }
             if (s.acceptSeed()) {
-                bww.write(s.getStr()+"\n");
                 fseeds.add(s.getKey());
+                justNew.add(s.getKey());
             }
         }
-        bww.close();
         bw.close();
 
         // MERGE with OLD CORPUS
@@ -74,9 +73,18 @@ public class MainFilterPair {
         while(line != null) {
             line = line.trim();
             fseeds.add(line);
+            justNew.remove(line);
             line = bff.readLine();
         }
         bff.close();
+
+        // print justNEW
+        BufferedWriter bww = new BufferedWriter(new FileWriter("../tmpresult/iterasi-"+iterasike+"-new.seed"));
+        for (String s : justNew) {
+            bww.write(s+"\n");
+        }
+        bww.close();
+
 
         List<Pair> ppairs = new ArrayList<>();
         for (String s : fseeds) {
