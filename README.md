@@ -1,7 +1,10 @@
 # ispirksskripsi
-Demi 3.9x :")
 
 ```
-3 bebek kwek kwek
-:v :v :v
+Pembangunan Korpus Pasangan Kata Relasi Hipernim-Hiponim Bahasa Indonesia Menggunakan Pendekatan Pattern Analysis
+Building Indonesian Hypernym-Hyponym Corpus using Pattern Analysis
+
+Documentation: https://github.com/madenindya/latexispirks
+Further info: made.nindyatama@gmail.com
+
 ```
