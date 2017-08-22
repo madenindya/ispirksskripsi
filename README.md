@@ -4,5 +4,8 @@ Pembangunan Korpus Pasangan Kata Relasi Hipernim-Hiponim Bahasa Indonesia Menggu
 
 Building Indonesian Hypernym-Hyponym Corpus using Pattern Analysis
 
+
+```
 Documentation: https://github.com/madenindya/latexispirks
 Further info: made.nindyatama@gmail.com
+```
